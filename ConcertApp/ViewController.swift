@@ -2,10 +2,10 @@
 //  ViewController.swift
 //  ConcertApp
 //
-//  Created by Thomas Your on 6/5/17.
 //  Copyright © 2017 Team2. All rights reserved.
 //
 
+//ViewController should be renamed
 import UIKit
 
 class ViewController: UIViewController {
