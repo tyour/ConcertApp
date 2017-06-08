@@ -111,10 +111,10 @@
             </objects>
             <point key="canvasLocation" x="24.800000000000001" y="36.431784107946029"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Artist Table View Controller-->
         <scene sceneID="VCB-Cd-iz2">
             <objects>
-                <tableViewController id="fsH-H2-yqV" sceneMemberID="viewController">
+                <tableViewController id="fsH-H2-yqV" customClass="ArtistTableViewController" customModule="ConcertApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ff6-yP-cIc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
