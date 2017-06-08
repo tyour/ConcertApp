@@ -301,6 +301,7 @@
 				415AC2B21EE65196002819D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
