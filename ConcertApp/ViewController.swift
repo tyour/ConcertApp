@@ -13,30 +13,26 @@ class ViewController: UIViewController {
     //Buttons for navigation cluster
     @IBOutlet var ArtistButton: UIButton!
     @IBOutlet var EventButton: UIButton!
-    @IBOutlet var GenreButton: UIButton!
+    @IBOutlet var DateButton: UIButton!
     @IBOutlet var LocationButton: UIButton!
     
     //Static objects
     @IBOutlet var TitleLabel: UILabel!
-    @IBOutlet var ButtonClusterBackground: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Formats button cluster
-        self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "concertbackground_formatted"))
-        ArtistButton.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "icon_artist"))
-        EventButton.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "icon_event"))
-        GenreButton.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "icon_genre"))
-        LocationButton.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "icon_location"))
+//        ArtistButton.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "icon_artist"))
+//        EventButton.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "icon_event"))
+//        DateButton.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "icon_genre"))
+//        LocationButton.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "icon_location"))
         
         ArtistButton.layer.cornerRadius = 5
         EventButton.layer.cornerRadius = 5
-        GenreButton.layer.cornerRadius = 5
+        DateButton.layer.cornerRadius = 5
         LocationButton.layer.cornerRadius = 5
         
-        ButtonClusterBackground.layer.masksToBounds = true
-        ButtonClusterBackground.layer.cornerRadius = 10
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,15 +42,20 @@ class ViewController: UIViewController {
     
     //Button Cluster Actions
     @IBAction func ArtistButtonPress(_ sender: Any) {
+        print("ARTISTBUTTONPRESS")
     }
     
     @IBAction func EventButtonPress(_ sender: Any) {
+        print("EVENTBUTTONPRESS")
     }
     
-    @IBAction func GenreButtonPress(_ sender: Any) {
+    @IBAction func DateButtonPress(_ sender: Any) {
+        print("DATEBUTTONPRESS")
     }
+
     
     @IBAction func LocationButtonPress(_ sender: Any) {
+        print("LOCATIONBUTTONPRESS")
     }
     
     
