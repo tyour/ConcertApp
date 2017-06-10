@@ -10,6 +10,32 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    func makeGetCall () {
+        let url_str = "http://api.jambase.com/events?zipCode=95110&radius=5&startDate=2017-06-20&endDate=2017-06-21&page=0&api_key=832t889gh3n8728fzxthr644"
+        // Set up the URL request
+        let todoEndpoint: String = url_str
+        guard let url = URL(string: todoEndpoint) else {
+            print("Error: cannot create URL")
+            return
+        }
+        let urlRequest = URLRequest(url: url)
+        
+        // set up the session
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        // make the request
+        let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+            print("We are in the callback")
+            // do stuff with response, data & error here
+            print(error ?? "no error")
+            print(response ?? "no reponse")
+        })
+        print("hi")
+        task.resume()
+        print("bye")
+    }
+    
     //Buttons for navigation cluster
     @IBOutlet var ArtistButton: UIButton!
     @IBOutlet var EventButton: UIButton!
@@ -32,6 +58,9 @@ class ViewController: UIViewController {
         EventButton.layer.cornerRadius = 5
         DateButton.layer.cornerRadius = 5
         LocationButton.layer.cornerRadius = 5
+        
+        makeGetCall()
+        print("loaded")
         
     }
 

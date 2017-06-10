@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "FD4B487DCD944A5F31FC6E1AF5358C39F27E2612",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "FD4B487DCD944A5F31FC6E1AF5358C39F27E2612" : 9223372036854775807,
+    "D59229813EEECF0DABB21C56E6570D0ED82A8EF7" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BF4A4938-D910-41C3-8E4F-F9E775BA771A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "FD4B487DCD944A5F31FC6E1AF5358C39F27E2612" : "ConcertApp\/",
+    "D59229813EEECF0DABB21C56E6570D0ED82A8EF7" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ConcertApp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ConcertApp.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/samdeanefox\/iOS_Projects.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D59229813EEECF0DABB21C56E6570D0ED82A8EF7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tyour\/ConcertApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FD4B487DCD944A5F31FC6E1AF5358C39F27E2612"
+    }
+  ]
+}
