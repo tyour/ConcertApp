@@ -39,12 +39,12 @@ class ViewController: UIViewController {
             }
             // parse the result as JSON, since that's what the API provides
             do {
-                guard let response_data = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: AnyObject] else {
+                guard let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: AnyObject] else {
                     print("error trying to convert data to JSON")
                     return
                 }
-                // now we have the todo, let's just print it to prove we can access it
-                print("\(response_data["Events"])")
+                // now we have the data, let's just print it to prove we can access it
+                print("\(json["Events"])")
                 print("whatup")
                 
                 // the todo object is a dictionary
