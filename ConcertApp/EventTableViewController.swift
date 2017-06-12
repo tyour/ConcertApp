@@ -19,6 +19,10 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating {
     var EventName : String = "Event"
     var EventDate: String = "Date"
     var EventImage = #imageLiteral(resourceName: "icon_event")
+    var fetchName: String = "\0"
+    var fetchLocation: String = "\0"
+    
+    //var searchResults = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +38,11 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating {
         self.searchController.searchResultsUpdater = self
         self.searchController.dimsBackgroundDuringPresentation = false
         self.tableView.tableHeaderView = self.searchController.searchBar
+        //makeGetCall(input: "oracle+arena")
+        
+        
+        makeGetCall()
+        //tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,14 +54,95 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->  UITableViewCell {
+        let cellIdentifier = "EventCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! EventTableViewCell
+        
+        //if searchController.isActive {
+        //let temp : String = makeGetCall(input: "oracle+arena")
+        cell.EventName.text = fetchName
+        cell.EventDate.text = fetchLocation
+        cell.EventImage.image = UIImage(named: "icon_event")
+        //}
+        return cell
     }
 
+    func makeGetCall() {
+        let url_str = "http://api.jambase.com/venues?name=oracle+arena&page=0&api_key=sbxzadxwszauykseun6pdj3u"
+        // Set up the URL request
+        let todoEndpoint: String = url_str
+        guard let url = URL(string: todoEndpoint) else {
+            print("Error: cannot create URL")
+            return
+        }
+        let urlRequest = URLRequest(url: url)
+        
+        // set up the session
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        // make the request
+        let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+            // check for any errors
+            guard error == nil else {
+                print("error calling GET on /todos/1")
+                print(error)
+                return
+            }
+            // make sure we got data
+            guard let responseData = data else {
+                print("Error: did not receive data")
+                return
+            }
+            // parse the result as JSON, since that's what the API provides
+            do {
+                guard let response_data = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: AnyObject] else {
+                    print("error trying to convert data to JSON")
+                    return
+                }
+                // now we have the todo, let's just print it to prove we can access it
+                print("\((response_data["Venues"]![0]! as! [String: Any])["Name"]! as! String)")
+                self.fetchName = (response_data["Venues"]![0]! as! [String: Any])["Name"]! as! String
+                self.fetchLocation = ((response_data["Venues"]![0]! as! [String: Any])["City"]! as! String) + ", " + ((response_data["Venues"]![0]! as! [String: Any])["State"]! as! String)
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
+                self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
+                self.tableView.endUpdates()
+
+                print("whatup")
+                
+                
+                
+                // the todo object is a dictionary
+                // so we just access the title using the "title" key
+                // so check for a title and print it if we have one
+                //guard let todoTitle = response_data["title"] as? String else {
+                //  print("Could not get todo title from JSON")
+                // return
+                //}
+            } catch  {
+                print("error trying to convert data to JSON")
+                return
+            }
+        })
+        print("hi")
+        task.resume()
+        
+        print("bye")
+    }
+
+
+    override var prefersStatusBarHidden: Bool{
+        return true
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
