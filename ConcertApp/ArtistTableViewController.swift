@@ -12,8 +12,8 @@ import CoreData
 class ArtistTableViewController: UITableViewController, UISearchResultsUpdating {
 
    var searchController : UISearchController
-    var artistName : String = "ArtistName"
-    var artistImage : UIImage = #imageLiteral(resourceName: "icon_artist")
+    var artistName : [String] = ["ArtistName"]
+    var artistImage : [UIImage] = [#imageLiteral(resourceName: "icon_artist")]
     
     func updateSearchResults(for searchController: UISearchController) {
         tableView.reloadData()
@@ -54,19 +54,19 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
         return 1
     }
 
-/*
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "ArtistCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as!
+        let cellIdentifier = "ArtistTableViewCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as!
             ArtistTableViewCell
 
         // Configure the cell...
-        cell.ArtistName?.text = cellItem.iName
-        cell.textLabel?.text = Artists[indexPath.row]
+        cell.ArtistName?.text = artistName[indexPath.row]
+        cell.ArtistImage?.image = artistImage[indexPath.row]
         return cell
     }
 
-*/
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

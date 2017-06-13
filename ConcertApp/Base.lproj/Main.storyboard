@@ -125,16 +125,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="6" id="XU2-Jw-Rvk">
-                                <rect key="frame" x="0.0" y="28" width="414" height="6"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XU2-Jw-Rvk" id="Big-MZ-Amq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="82" id="p5o-Tc-Twu" customClass="ArtistTableViewCell" customModule="ConcertApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="34" width="414" height="82"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="82"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p5o-Tc-Twu" id="hzm-tW-aK8">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="81"/>
