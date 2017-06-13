@@ -3,13 +3,12 @@
     <entity name="ConcertObject" representedClassName="ConcertObjectMO" syncable="YES" codeGenerationType="class">
         <attribute name="concertArtists" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="concertDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="concertGenre" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="concertImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="concertLocation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="concertName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="favoritedEvent" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ConcertObject" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="ConcertObject" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>
