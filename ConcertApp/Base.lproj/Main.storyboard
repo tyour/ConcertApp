@@ -251,6 +251,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3I-rJ-0Vi">
+                                <rect key="frame" x="351" y="674" width="41" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Home"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.7225461769" green="0.78789806029999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
