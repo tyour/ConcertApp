@@ -10,17 +10,28 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     @IBOutlet var myMap: MKMapView!
     @IBOutlet var searchField: UITextField!
     
+    var myLocMgr = CLLocationManager()
+    var myGeoCoder = CLGeocoder()
+    var showPlacemark = CLPlacemark()
     
+    var toAddr : String?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        myLocMgr.requestWhenInUseAuthorization()
+        let status = CLLocationManager.authorizationStatus()
+        if status == CLAuthorizationStatus.authorizedWhenInUse {
+            self.myMap.showsUserLocation = true
+        }
+        
+        myMap.delegate = self
         // Do any additional setup after loading the view.
     }
 
