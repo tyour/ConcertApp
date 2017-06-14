@@ -18,6 +18,7 @@
 		415AC2A71EE65196002819D6 /* ConcertApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 415AC2A51EE65196002819D6 /* ConcertApp.xcdatamodeld */; };
 		415AC2A91EE65196002819D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 415AC2A81EE65196002819D6 /* Assets.xcassets */; };
 		415AC2AC1EE65196002819D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 415AC2AA1EE65196002819D6 /* LaunchScreen.storyboard */; };
+		634277EF1EF11D9C00C13DCA /* VenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634277EE1EF11D9C00C13DCA /* VenueViewController.swift */; };
 		C20D0CA31EEF85F90099EF87 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D0CA21EEF85F90099EF87 /* ArtistTableViewCell.swift */; };
 		C27DC53B1EE8E7AA00BBF207 /* ArtistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27DC53A1EE8E7AA00BBF207 /* ArtistTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		415AC2A81EE65196002819D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		415AC2AB1EE65196002819D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		415AC2AD1EE65196002819D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		634277EE1EF11D9C00C13DCA /* VenueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VenueViewController.swift; path = ../VenueViewController.swift; sourceTree = "<group>"; };
 		C20D0CA21EEF85F90099EF87 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
 		C27DC53A1EE8E7AA00BBF207 /* ArtistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +78,7 @@
 				415AC2A21EE65196002819D6 /* Main.storyboard */,
 				410D230E1EEF8582004E23BC /* MapViewController.swift */,
 				2A5B3EB51EE8EC1200EC4030 /* EventTableViewController.swift */,
+				634277EE1EF11D9C00C13DCA /* VenueViewController.swift */,
 				C20D0CA21EEF85F90099EF87 /* ArtistTableViewCell.swift */,
 				2A5B3EB71EE8EC5E00EC4030 /* EventTableViewCell.swift */,
 				C27DC53A1EE8E7AA00BBF207 /* ArtistTableViewController.swift */,
@@ -160,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				634277EF1EF11D9C00C13DCA /* VenueViewController.swift in Sources */,
 				C27DC53B1EE8E7AA00BBF207 /* ArtistTableViewController.swift in Sources */,
 				415AC2A11EE65196002819D6 /* ViewController.swift in Sources */,
 				415AC2A71EE65196002819D6 /* ConcertApp.xcdatamodeld in Sources */,
