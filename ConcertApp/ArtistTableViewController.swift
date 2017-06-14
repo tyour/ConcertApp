@@ -11,7 +11,7 @@ import CoreData
 
 class ArtistTableViewController: UITableViewController, UISearchResultsUpdating {
 
-   var searchController : UISearchController
+    var searchController : UISearchController!
     var artistName : [String] = ["ArtistName"]
     var artistImage : [UIImage] = [#imageLiteral(resourceName: "icon_artist")]
     
