@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2A5B3EB61EE8EC1200EC4030 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B3EB51EE8EC1200EC4030 /* EventTableViewController.swift */; };
 		2A5B3EB81EE8EC5E00EC4030 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B3EB71EE8EC5E00EC4030 /* EventTableViewCell.swift */; };
+		400F63C11EF1022F00D0F8BD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400F63C01EF1022F00D0F8BD /* Utils.swift */; };
 		409F3DA11EECAD67002BB2FF /* DataSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409F3DA01EECAD67002BB2FF /* DataSingleton.swift */; };
 		410D230F1EEF8582004E23BC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D230E1EEF8582004E23BC /* MapViewController.swift */; };
 		415AC29F1EE65196002819D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AC29E1EE65196002819D6 /* AppDelegate.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		2A5B3EB51EE8EC1200EC4030 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		2A5B3EB71EE8EC5E00EC4030 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		400F63C01EF1022F00D0F8BD /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		409F3DA01EECAD67002BB2FF /* DataSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSingleton.swift; sourceTree = "<group>"; };
 		410D230E1EEF8582004E23BC /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		415AC29B1EE65196002819D6 /* ConcertApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConcertApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +83,7 @@
 				415AC2AA1EE65196002819D6 /* LaunchScreen.storyboard */,
 				415AC2AD1EE65196002819D6 /* Info.plist */,
 				415AC2A51EE65196002819D6 /* ConcertApp.xcdatamodeld */,
+				400F63C01EF1022F00D0F8BD /* Utils.swift */,
 			);
 			path = ConcertApp;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				415AC2A71EE65196002819D6 /* ConcertApp.xcdatamodeld in Sources */,
 				2A5B3EB61EE8EC1200EC4030 /* EventTableViewController.swift in Sources */,
 				409F3DA11EECAD67002BB2FF /* DataSingleton.swift in Sources */,
+				400F63C11EF1022F00D0F8BD /* Utils.swift in Sources */,
 				2A5B3EB81EE8EC5E00EC4030 /* EventTableViewCell.swift in Sources */,
 				C20D0CA31EEF85F90099EF87 /* ArtistTableViewCell.swift in Sources */,
 				415AC29F1EE65196002819D6 /* AppDelegate.swift in Sources */,
