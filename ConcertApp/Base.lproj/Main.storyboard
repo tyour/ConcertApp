@@ -1,14 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YVi-0J-emd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YVi-0J-emd">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Date View Controller-->
+        <scene sceneID="LJG-bW-iRC">
+            <objects>
+                <viewController id="b6j-5B-cTa" customClass="DateViewController" customModule="ConcertApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="O2y-Le-l6g"/>
+                        <viewControllerLayoutGuide type="bottom" id="gEQ-FR-Xcd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Lc-am-yUb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QgC-ie-hIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1832" y="-683"/>
+        </scene>
         <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -27,6 +45,7 @@
                                 <color key="backgroundColor" red="0.90231604227435802" green="0.97863712654115653" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="DateButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qPQ-5d-iX4"/>
+                                    <segue destination="b6j-5B-cTa" kind="show" identifier="toDateView" id="NFy-wH-epJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWu-oY-eHn">
@@ -35,6 +54,7 @@
                                 <color key="backgroundColor" red="0.90231604227435802" green="0.97863712654115653" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="ArtistButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="70k-Og-j5m"/>
+                                    <segue destination="fsH-H2-yqV" kind="show" identifier="toArtistView" id="ffd-w7-9yq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkW-6A-Gtl">
@@ -43,6 +63,7 @@
                                 <color key="backgroundColor" red="0.90231604227435802" green="0.97863712654115653" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="LocationButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HVm-WZ-4ez"/>
+                                    <segue destination="KTe-h7-Fnh" kind="show" identifier="toMapView" id="Kp7-1Y-OuZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9V7-Zw-Wh1">
@@ -51,6 +72,7 @@
                                 <color key="backgroundColor" red="0.90231604227435802" green="0.97863712654115653" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="EventButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uku-vO-hAh"/>
+                                    <segue destination="ZEh-mr-GC2" kind="show" identifier="toEventView" id="S9E-u7-aNv"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnD-oF-wcv">
@@ -129,7 +151,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="82"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p5o-Tc-Twu" id="hzm-tW-aK8">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="81.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t90-LX-wlF">
@@ -174,7 +196,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="82"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fic-Ht-Zmb" id="9es-vL-wjw">
-                                    <rect key="frame" x="0.0" y="0.0" width="381" height="82"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="381" height="81.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L93-gU-VG7">
@@ -357,4 +379,7 @@
         <image name="icon_event" width="85" height="85"/>
         <image name="icon_location" width="85" height="85"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="S9E-u7-aNv"/>
+    </inferredMetricsTieBreakers>
 </document>
