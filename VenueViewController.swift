@@ -24,12 +24,12 @@ class VenueViewController: UIViewController, UITableViewDelegate, UITableViewDat
         activityIndicator.hidesWhenStopped = true
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         view.addSubview(activityIndicator)
-        get_data_from_url(url: "http://api.jambase.com/events?venueId=" + VenueID + "&page=0&api_key=dbb7ha6cq9z9jbrmpf7qks7v")
+        
         
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
-        
+        get_data_from_url(url: "http://api.jambase.com/events?venueId=" + VenueID + "&page=0&api_key=buenzrs3exbzhb7f9fbrbvyz")
     }
 
     override func didReceiveMemoryWarning() {

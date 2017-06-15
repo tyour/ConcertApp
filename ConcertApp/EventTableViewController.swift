@@ -29,6 +29,7 @@ class EventTableViewController: UITableViewController /*, UISearchResultsUpdatin
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.alwaysBounceVertical = false
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
@@ -54,7 +55,7 @@ class EventTableViewController: UITableViewController /*, UISearchResultsUpdatin
     override func viewDidAppear(_ animated: Bool) {
 //        get_data_from_url(url: "http://api.jambase.com/venues?name=oracle&page=0&api_key=sbxzadxwszauykseun6pdj3u")
         
-        get_data_from_url(url: "http://api.jambase.com/venues?name=oracle&page=0&api_key=dbb7ha6cq9z9jbrmpf7qks7v")
+        get_data_from_url(url: "http://api.jambase.com/venues?name=oracle&page=0&api_key=buenzrs3exbzhb7f9fbrbvyz")
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,27 +75,34 @@ class EventTableViewController: UITableViewController /*, UISearchResultsUpdatin
         
         if TableData["Venues"]?.count != nil
         {
-            return TableData["Venues"]!.count
+            return (TableData["Venues"]!.count)
         }
         
         else
         {
-            return 0
+            return 1
         }
         //return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->  UITableViewCell {
+        if indexPath.row == 0 {
+            let cellIdentifier = "EventSearchCell"
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+            return cell
+        }
+        else {
         let cellIdentifier = "EventCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! EventTableViewCell
         
         //if searchController.isActive {
         //let temp : String = makeGetCall(input: "oracle+arena")
-        cell.EventName.text = (TableData["Venues"]![indexPath.row]! as! [String: Any])["Name"]! as? String
-        cell.EventDate.text = ((TableData["Venues"]![indexPath.row]! as! [String: Any])["City"]! as? String)! + ", " + ((TableData["Venues"]![indexPath.row]! as! [String: Any])["State"]! as? String)!
+        cell.EventName.text = (TableData["Venues"]![indexPath.row - 1]! as! [String: Any])["Name"]! as? String
+        cell.EventDate.text = ((TableData["Venues"]![indexPath.row - 1]! as! [String: Any])["City"]! as? String)! + ", " + ((TableData["Venues"]![indexPath.row]! as! [String: Any])["State"]! as? String)!
         cell.EventImage.image = UIImage(named: "icon_event")
         //}
         return cell
+        }
     }
     
     // http://api.jambase.com/venues?name=oracle+arena&page=0&api_key=sbxzadxwszauykseun6pdj3u&o=json
@@ -155,8 +163,10 @@ class EventTableViewController: UITableViewController /*, UISearchResultsUpdatin
         })
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        VenueID = "\((TableData["Venues"]![indexPath.row]! as! [String: Any])["Id"]!)"
+        if indexPath.row != 0{
+        VenueID = "\((TableData["Venues"]![indexPath.row - 1]! as! [String: Any])["Id"]!)"
         //print((TableData["Venues"]![indexPath.row]! as! [String: Any])["Id"]!)
+        }
     }
 //    func makeGetCall() {
 //        let url_str = "http://api.jambase.com/venues?name=oracle+arena&page=0&api_key=sbxzadxwszauykseun6pdj3u"
@@ -281,7 +291,9 @@ class EventTableViewController: UITableViewController /*, UISearchResultsUpdatin
         // Pass the selected object to the new view controller.
         if segue.identifier == SegueIdentifier{
             if let VenueDetail = segue.destination as? VenueViewController{
-                VenueDetail.VenueID = self.VenueID
+                if let indexPath = tableView.indexPathForSelectedRow {
+                VenueDetail.VenueID = "\((TableData["Venues"]![indexPath.row - 1]! as! [String: Any])["Id"]!)"
+                }
             }
         }
         
