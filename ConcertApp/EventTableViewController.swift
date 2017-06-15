@@ -48,7 +48,9 @@ class EventTableViewController: UITableViewController /*, UISearchResultsUpdatin
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        get_data_from_url(url: "http://api.jambase.com/venues?name=oracle&page=0&api_key=sbxzadxwszauykseun6pdj3u")
+//        get_data_from_url(url: "http://api.jambase.com/venues?name=oracle&page=0&api_key=sbxzadxwszauykseun6pdj3u")
+        
+        get_data_from_url(url: "http://api.jambase.com/venues?name=oracle&page=0&api_key=uwphnbt6vu4f2tebsgfapraw")
     }
 
     override func didReceiveMemoryWarning() {
