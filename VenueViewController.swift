@@ -13,13 +13,18 @@ class VenueViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet var tableView: UITableView!
     var VenueID: String = ""
     var TableData:[String: AnyObject] = [:]
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.tableView.register(VenueDetailTableViewCell.self, forCellReuseIdentifier: "VenueDetailCell")
         tableView.delegate = self
         tableView.dataSource = self
-    print(VenueID)
-        get_data_from_url(url: "http://api.jambase.com/events?venueId=" + VenueID + "&page=0&api_key=uwphnbt6vu4f2tebsgfapraw")
+        print(VenueID)
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(activityIndicator)
+        get_data_from_url(url: "http://api.jambase.com/events?venueId=" + VenueID + "&page=0&api_key=dbb7ha6cq9z9jbrmpf7qks7v")
         
         // Do any additional setup after loading the view.
     }
@@ -74,6 +79,7 @@ class VenueViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func get_data_from_url(url:String)
     {
+        self.activityIndicator.startAnimating()
         let httpMethod = "GET"
         let timeout = 15
         let url = URL(string: url)
@@ -122,6 +128,7 @@ class VenueViewController: UIViewController, UITableViewDelegate, UITableViewDat
     {
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
+            self.activityIndicator.stopAnimating()
             return
         })
     }

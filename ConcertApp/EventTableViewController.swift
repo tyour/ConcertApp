@@ -23,12 +23,16 @@ class EventTableViewController: UITableViewController /*, UISearchResultsUpdatin
     var fetchLocation: String = "\0"
     var TableData:[String: AnyObject] = [:]
     var VenueID: String = ""
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     //var searchResults = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(activityIndicator)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -50,7 +54,7 @@ class EventTableViewController: UITableViewController /*, UISearchResultsUpdatin
     override func viewDidAppear(_ animated: Bool) {
 //        get_data_from_url(url: "http://api.jambase.com/venues?name=oracle&page=0&api_key=sbxzadxwszauykseun6pdj3u")
         
-        get_data_from_url(url: "http://api.jambase.com/venues?name=oracle&page=0&api_key=uwphnbt6vu4f2tebsgfapraw")
+        get_data_from_url(url: "http://api.jambase.com/venues?name=oracle&page=0&api_key=dbb7ha6cq9z9jbrmpf7qks7v")
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,6 +101,7 @@ class EventTableViewController: UITableViewController /*, UISearchResultsUpdatin
 
     func get_data_from_url(url:String)
     {
+        self.activityIndicator.startAnimating()
         let httpMethod = "GET"
         let timeout = 15
         let url = URL(string: url)
@@ -145,6 +150,7 @@ class EventTableViewController: UITableViewController /*, UISearchResultsUpdatin
     {
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
+            self.activityIndicator.stopAnimating()
             return
         })
     }
