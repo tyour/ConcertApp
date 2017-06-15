@@ -22,6 +22,7 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating {
     var fetchName: String = "\0"
     var fetchLocation: String = "\0"
     var TableData:[String: AnyObject] = [:]
+    var VenueID: String = ""
     
     //var searchResults = []
     
@@ -141,6 +142,10 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating {
             return
         })
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        VenueID = ((TableData["Venues"]![indexPath.row]! as! [String: Any])["Id"]! as? String)!
+
+    }
 //    func makeGetCall() {
 //        let url_str = "http://api.jambase.com/venues?name=oracle+arena&page=0&api_key=sbxzadxwszauykseun6pdj3u"
 //        // Set up the URL request
@@ -254,14 +259,21 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
+    let SegueIdentifier = "VenueSegue"
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == SegueIdentifier{
+            if let VenueDetail = segue.destination as? VenueViewController{
+                VenueDetail.VenueID = self.VenueID
+            }
+        }
+        
     }
-    */
+ 
 
 }
