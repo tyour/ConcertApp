@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YVi-0J-emd">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YVi-0J-emd">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -45,7 +45,6 @@
                                 <color key="backgroundColor" red="0.90231604227435802" green="0.97863712654115653" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="DateButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qPQ-5d-iX4"/>
-                                    <segue destination="b6j-5B-cTa" kind="show" identifier="toDateView" id="NFy-wH-epJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWu-oY-eHn">
@@ -54,7 +53,6 @@
                                 <color key="backgroundColor" red="0.90231604227435802" green="0.97863712654115653" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="ArtistButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="70k-Og-j5m"/>
-                                    <segue destination="fsH-H2-yqV" kind="show" identifier="toArtistView" id="ffd-w7-9yq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkW-6A-Gtl">
@@ -63,7 +61,6 @@
                                 <color key="backgroundColor" red="0.90231604227435802" green="0.97863712654115653" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="LocationButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HVm-WZ-4ez"/>
-                                    <segue destination="KTe-h7-Fnh" kind="show" identifier="toMapView" id="Kp7-1Y-OuZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9V7-Zw-Wh1">
@@ -72,7 +69,6 @@
                                 <color key="backgroundColor" red="0.90231604227435802" green="0.97863712654115653" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="EventButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uku-vO-hAh"/>
-                                    <segue destination="ZEh-mr-GC2" kind="show" identifier="toEventView" id="S9E-u7-aNv"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnD-oF-wcv">
@@ -132,11 +128,15 @@
                         <outlet property="DateButton" destination="Da4-02-6YX" id="D3e-lh-h2y"/>
                         <outlet property="EventButton" destination="9V7-Zw-Wh1" id="yKe-zo-KfQ"/>
                         <outlet property="LocationButton" destination="rkW-6A-Gtl" id="MOf-1R-OTp"/>
+                        <segue destination="ZEh-mr-GC2" kind="show" identifier="toEventView" id="XnR-Eq-dfM"/>
+                        <segue destination="fsH-H2-yqV" kind="show" identifier="toArtistView" id="Es0-QI-skG"/>
+                        <segue destination="b6j-5B-cTa" kind="show" identifier="toDateView" id="ldk-gF-4HH"/>
+                        <segue destination="KTe-h7-Fnh" kind="show" identifier="toMapView" id="OmZ-9c-2SN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1839.1304347826087" y="35.869565217391305"/>
+            <point key="canvasLocation" x="1832" y="-1"/>
         </scene>
         <!--Artist Table View Controller-->
         <scene sceneID="VCB-Cd-iz2">
@@ -151,7 +151,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="82"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p5o-Tc-Twu" id="hzm-tW-aK8">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="81.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t90-LX-wlF">
@@ -181,7 +181,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQG-dk-QXB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2553.6231884057975" y="35.869565217391305"/>
+            <point key="canvasLocation" x="2890" y="26"/>
         </scene>
         <!--Event Table View Controller-->
         <scene sceneID="PSF-pV-cVj">
@@ -196,7 +196,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="82"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fic-Ht-Zmb" id="9es-vL-wjw">
-                                    <rect key="frame" x="0.0" y="0.0" width="381" height="81.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="381" height="82"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L93-gU-VG7">
@@ -354,24 +354,6 @@
             </objects>
             <point key="canvasLocation" x="931.88405797101461" y="35.869565217391305"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="WL5-1K-7cC">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D83-ii-aIM" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MOn-6Y-vGj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ZEh-mr-GC2" kind="relationship" relationship="rootViewController" id="5sS-eg-C8Q"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vgQ-DN-yxi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1837.68115942029" y="715.76086956521749"/>
-        </scene>
     </scenes>
     <resources>
         <image name="icon_artist" width="85" height="85"/>
@@ -379,7 +361,4 @@
         <image name="icon_event" width="85" height="85"/>
         <image name="icon_location" width="85" height="85"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="S9E-u7-aNv"/>
-    </inferredMetricsTieBreakers>
 </document>

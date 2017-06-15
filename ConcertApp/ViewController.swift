@@ -54,23 +54,23 @@ class ViewController: UIViewController {
     //Button Cluster Actions
     @IBAction func ArtistButtonPress(_ sender: Any) {
         print("ARTISTBUTTONPRESS")
-        performSegue(withIdentifier: "toArtistView", sender: nil)
+        self.performSegue(withIdentifier: "toArtistView", sender: self)
     }
     
     @IBAction func EventButtonPress(_ sender: Any) {
         print("EVENTBUTTONPRESS")
-        performSegue(withIdentifier: "toEventView", sender: nil)
+        self.performSegue(withIdentifier: "toEventView", sender: self)
     }
     
     @IBAction func DateButtonPress(_ sender: Any) {
         print("DATEBUTTONPRESS")
-        performSegue(withIdentifier: "toDateView", sender: nil)
+        self.performSegue(withIdentifier: "toDateView", sender: self)
     }
     
     
     @IBAction func LocationButtonPress(_ sender: Any) {
         print("LOCATIONBUTTONPRESS")
-        performSegue(withIdentifier: "toMapView", sender: nil)
+        self.performSegue(withIdentifier: "toMapView", sender: self)
     }
     
     

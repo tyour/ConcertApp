@@ -8,13 +8,13 @@
 
 import UIKit
 
-class EventTableViewController: UITableViewController, UISearchResultsUpdating {
+class EventTableViewController: UITableViewController /*, UISearchResultsUpdating*/ {
 
-    var searchController : UISearchController!
+    //var searchController : UISearchController!
     
-    func updateSearchResults(for searchController: UISearchController) {
-        tableView.reloadData()
-    }
+//    func updateSearchResults(for searchController: UISearchController) {
+//        tableView.reloadData()
+//    }
     
     var EventName : String = "Event"
     var EventDate: String = "Date"
@@ -34,17 +34,21 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.searchController = UISearchController(searchResultsController: nil)
-        self.searchController.searchBar.sizeToFit()
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.searchResultsUpdater = self
-        self.searchController.dimsBackgroundDuringPresentation = false
-        self.tableView.tableHeaderView = self.searchController.searchBar
+//        self.searchController = UISearchController(searchResultsController: nil)
+//        self.searchController.searchBar.sizeToFit()
+//        self.searchController.hidesNavigationBarDuringPresentation = false
+//        self.searchController.searchResultsUpdater = self
+//        self.searchController.dimsBackgroundDuringPresentation = false
+//        self.tableView.tableHeaderView = self.searchController.searchBar
         //makeGetCall(input: "oracle+arena")
-        get_data_from_url(url: "http://api.jambase.com/venues?name=oracle&page=0&api_key=sbxzadxwszauykseun6pdj3u")
+        
         
         //makeGetCall()
         //tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        get_data_from_url(url: "http://api.jambase.com/venues?name=oracle&page=0&api_key=sbxzadxwszauykseun6pdj3u")
     }
 
     override func didReceiveMemoryWarning() {
@@ -143,7 +147,7 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating {
         })
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        VenueID = ((TableData["Venues"]![indexPath.row]! as! [String: Any])["Id"]! as? String)!
+        //VenueID = ((TableData["Venues"]![indexPath.row]! as! [String: Any])["Id"]! as? String)!
 
     }
 //    func makeGetCall() {
