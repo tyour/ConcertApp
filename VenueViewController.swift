@@ -10,9 +10,11 @@ import UIKit
 
 class VenueViewController: UIViewController {
 
+    var VenueID: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    print(VenueID)
         // Do any additional setup after loading the view.
     }
 
