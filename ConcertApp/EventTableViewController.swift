@@ -147,8 +147,8 @@ class EventTableViewController: UITableViewController /*, UISearchResultsUpdatin
         })
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        //VenueID = ((TableData["Venues"]![indexPath.row]! as! [String: Any])["Id"]! as? String)!
-
+        VenueID = "\((TableData["Venues"]![indexPath.row]! as! [String: Any])["Id"]!)"
+        //print((TableData["Venues"]![indexPath.row]! as! [String: Any])["Id"]!)
     }
 //    func makeGetCall() {
 //        let url_str = "http://api.jambase.com/venues?name=oracle+arena&page=0&api_key=sbxzadxwszauykseun6pdj3u"
