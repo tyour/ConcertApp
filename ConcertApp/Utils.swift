@@ -15,7 +15,6 @@ class Utils {
     static private let API_BASE_URL: String = "http://api.jambase.com"
     
     
-    
     // Empty constructor
     init() {}
     
