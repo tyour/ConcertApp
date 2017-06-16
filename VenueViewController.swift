@@ -70,7 +70,9 @@ class VenueViewController: UIViewController, UITableViewDelegate, UITableViewDat
         //let temp : String = makeGetCall(input: "oracle+arena")
         cell.ArtistName.text = ((((TableData["Events"]![indexPath.row] as! [String: Any])["Artists"] as! Array<[String: Any]>)[0])["Name"] as? String)
         print(cell.ArtistName)
-        cell.EventDate.text = ((TableData["Events"]![indexPath.row]! as! [String: Any])["Date"]! as? String)
+        let Date: String = ((TableData["Events"]![indexPath.row]! as! [String: Any])["Date"]! as? String)!
+        let index = Date.index(Date.startIndex, offsetBy: 10)
+        cell.EventDate.text = Date.substring(to: index)
         //}
         return cell
     }
