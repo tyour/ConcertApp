@@ -16,8 +16,6 @@ final class DataSingleton {
     var default_data : [String: AnyObject] = [:]
     // Array of data from api calls made dynamically by user
     var dynamic_data : [ [String: AnyObject] ] = []
-    // Stores list of default artists in a simple array
-    var artist_list: [String] = []
     
     private init() {}
     
