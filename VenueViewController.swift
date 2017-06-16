@@ -68,7 +68,7 @@ class VenueViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         //if searchController.isActive {
         //let temp : String = makeGetCall(input: "oracle+arena")
-        cell.ArtistName.text = ((((TableData["Events"]?[indexPath.row] as! [String: Any])["Artists"] as! Array<[String: Any]>)[0])["Name"] as? String)
+        cell.ArtistName.text = ((((TableData["Events"]![indexPath.row] as! [String: Any])["Artists"] as! Array<[String: Any]>)[0])["Name"] as? String)
         print(cell.ArtistName)
         cell.EventDate.text = ((TableData["Events"]![indexPath.row]! as! [String: Any])["Date"]! as? String)
         //}
