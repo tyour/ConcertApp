@@ -23,6 +23,8 @@
 		6344B5441EF26B9300824182 /* VenueDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6344B5431EF26B9300824182 /* VenueDetailTableViewCell.swift */; };
 		C20D0CA31EEF85F90099EF87 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D0CA21EEF85F90099EF87 /* ArtistTableViewCell.swift */; };
 		C27DC53B1EE8E7AA00BBF207 /* ArtistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27DC53A1EE8E7AA00BBF207 /* ArtistTableViewController.swift */; };
+		E9299F971EF3573100C08099 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9299F961EF3573100C08099 /* CoreLocation.framework */; };
+		E9299F991EF3575100C08099 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9299F981EF3575100C08099 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		6344B5431EF26B9300824182 /* VenueDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueDetailTableViewCell.swift; sourceTree = "<group>"; };
 		C20D0CA21EEF85F90099EF87 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
 		C27DC53A1EE8E7AA00BBF207 /* ArtistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewController.swift; sourceTree = "<group>"; };
+		E9299F961EF3573100C08099 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E9299F981EF3575100C08099 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9299F991EF3575100C08099 /* MapKit.framework in Frameworks */,
+				E9299F971EF3573100C08099 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +68,7 @@
 			children = (
 				415AC29D1EE65196002819D6 /* ConcertApp */,
 				415AC29C1EE65196002819D6 /* Products */,
+				E9299F951EF3573100C08099 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +102,15 @@
 				400F63C01EF1022F00D0F8BD /* Utils.swift */,
 			);
 			path = ConcertApp;
+			sourceTree = "<group>";
+		};
+		E9299F951EF3573100C08099 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9299F981EF3575100C08099 /* MapKit.framework */,
+				E9299F961EF3573100C08099 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
