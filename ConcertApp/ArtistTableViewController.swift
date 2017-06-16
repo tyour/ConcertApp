@@ -12,7 +12,7 @@ import CoreData
 class ArtistTableViewController: UITableViewController, UISearchResultsUpdating {
 
     var searchController : UISearchController!
-    var artistName : [String] = ["ArtistName"]
+    var MyArtist : [String] = []
     var artistImage : [UIImage] = [#imageLiteral(resourceName: "icon_artist")]
     var fetchName: String = "\0"
     var TableData:[String: AnyObject] = DataSingleton.getInstance().default_data
@@ -22,7 +22,7 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
         tableView.reloadData()
     }
 
-   //var searchResults = []
+    var searchResults : [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +31,13 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        // self.searchController = UISearchController(searchResultsController: nil)
-        // self.searchController.searchBar.sizeToFit()
-        // self.searchController.hidesNavigationBarDuringPresentation = false
-        // self.searchController.searchResultsUpdater = self
-        // self.searchController.dimsBackgroundDuringPresentation = false
-        // self.tableView.tableHeaderView = self.searchController.searchBar
+         //self.navigationItem.rightBarButtonItem = self.editButtonItem()
+         self.searchController = UISearchController(searchResultsController: nil)
+         self.searchController.searchBar.sizeToFit()
+         self.searchController.hidesNavigationBarDuringPresentation = false
+         self.searchController.searchResultsUpdater = self
+         self.searchController.dimsBackgroundDuringPresentation = false
+         self.tableView.tableHeaderView = self.searchController.searchBar
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,7 +74,13 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
             ArtistTableViewCell
         // Configure the cell...
         cell.ArtistName.text = ((((TableData["Events"]![indexPath.row] as! [String: Any])["Artists"] as! Array<[String: Any]>)[0])["Name"] as? String)
+        MyArtist.append(cell.ArtistName.text!)
         print(cell.ArtistName)
+        
+        // Fade-in animation of cells. We set initial state, duration, and final state
+        cell.alpha = 0
+        UIView.animate(withDuration: 2.5, animations: { cell.alpha = 1})
+        
         return cell
 
         
@@ -133,6 +139,17 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
         // Pass the selected object to the new view controller.
     }
     */
+    /*func filterContentForSearchText(searchText: String) {
+        searchResults = MyArtist.filter({ (ArtistItem: String) -> Bool in
+            let nameMatch = MyArtist.range(of: searchText, options: String.CompareOptions.caseInsensitive)
+            return nameMatch != nil
+        })
+    }
     
-    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let textToSearch = searchController.searchBar.text {
+            filterContentForSearchText(searchText: textToSearch)
+            tableView.reloadData()
+        }
+    }*/
 }
