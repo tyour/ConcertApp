@@ -15,7 +15,7 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
     var artistName : [String] = ["ArtistName"]
     var artistImage : [UIImage] = [#imageLiteral(resourceName: "icon_artist")]
     var fetchName: String = "\0"
-    var TableData:[String: AnyObject] = [:]
+    var TableData:[String: AnyObject] = DataSingleton.getInstance().default_data
     
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -32,13 +32,12 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.searchController = UISearchController(searchResultsController: nil)
-        self.searchController.searchBar.sizeToFit()
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.searchResultsUpdater = self
-        self.searchController.dimsBackgroundDuringPresentation = false
-        self.tableView.tableHeaderView = self.searchController.searchBar
-        get_data_from_url(url: "http://api.jambase.com/events?artistId=12345")
+        // self.searchController = UISearchController(searchResultsController: nil)
+        // self.searchController.searchBar.sizeToFit()
+        // self.searchController.hidesNavigationBarDuringPresentation = false
+        // self.searchController.searchResultsUpdater = self
+        // self.searchController.dimsBackgroundDuringPresentation = false
+        // self.tableView.tableHeaderView = self.searchController.searchBar
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,7 +54,17 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        print("Hello World")
+        if TableData["Events"]?.count != nil
+        {
+            return TableData["Events"]!.count
+        }
+            
+        else
+        {
+            return 0
+        }
+        //return 1
     }
 
 
@@ -63,57 +72,15 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
         let cellIdentifier = "ArtistTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as!
             ArtistTableViewCell
+        
+        cell.ArtistName.text = ((((TableData["Events"]![indexPath.row] as! [String: Any])["Artists"] as! Array<[String: Any]>)[0])["Name"] as? String)
+        print(cell.ArtistName)
+        return cell
 
         // Configure the cell...
-        cell.ArtistName.text = (TableData["Artists"]![indexPath.row]! as! [String: Any])["Name"]! as? String
-        cell.ArtistImage.image = UIImage(named: "icon_artist")
-        return cell
-    }
-
-    func get_data_from_url(url:String)
-    {
-        let httpMethod = "GET"
-        let timeout = 15
-        let url = URL(string: url)
-        let urlRequest = URLRequest(url: url!,
-                                    cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
-                                    timeoutInterval: 15.0)
-        let queue = OperationQueue()
-        NSURLConnection.sendAsynchronousRequest(
-            urlRequest,
-            queue: queue,
-            completionHandler: {(response, data, error) in
-                if (data?.count)! > 0 && error == nil{
-                    self.extract_json(jsonData: data!)
-                }else if data?.count == 0 && error == nil{
-                    print("Nothing was downloaded")
-                } else if error != nil{
-                    print("Error happened = \(error)")
-                }
-        }
-        )
-    }
-    
-    func extract_json(jsonData:Data)
-    {
-        var parseError: NSError?
-        do {
-            guard let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: AnyObject] else {
-                print("error trying to convert data to JSON")
-                return
-            }
-            if (parseError == nil)
-            {
-                TableData = json
-                print(TableData)
-            }
-        } catch  {
-            print("error trying to convert data to JSON")
-            return
-        }
-        
-        
-        do_table_refresh();
+        //cell.ArtistName.text = (TableData["Artists"]![indexPath.row]! as! [String: Any])["Name"]! as? String
+        //cell.ArtistImage.image = UIImage(named: "icon_artist")
+        //return cell
     }
     
     func do_table_refresh()
