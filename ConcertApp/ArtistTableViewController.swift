@@ -72,15 +72,13 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
         let cellIdentifier = "ArtistTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as!
             ArtistTableViewCell
-        
+        // Configure the cell...
         cell.ArtistName.text = ((((TableData["Events"]![indexPath.row] as! [String: Any])["Artists"] as! Array<[String: Any]>)[0])["Name"] as? String)
         print(cell.ArtistName)
         return cell
 
-        // Configure the cell...
-        //cell.ArtistName.text = (TableData["Artists"]![indexPath.row]! as! [String: Any])["Name"]! as? String
-        //cell.ArtistImage.image = UIImage(named: "icon_artist")
-        //return cell
+        
+        
     }
     
     func do_table_refresh()
