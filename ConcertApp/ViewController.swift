@@ -43,7 +43,6 @@ class ViewController: UIViewController {
         // Cache default data to data object
         let route = "/events?zipCode=\(zipcode)&radius=\(radius)&startDate=\(todays_date)&endDate=\(future_date)&page=0&api_key=832t889gh3n8728fzxthr644"
         data.default_data = Utils.makeGetCall(route: route)
-        print("\(data.default_data)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,19 +53,23 @@ class ViewController: UIViewController {
     //Button Cluster Actions
     @IBAction func ArtistButtonPress(_ sender: Any) {
         print("ARTISTBUTTONPRESS")
+        self.performSegue(withIdentifier: "toArtistView", sender: self)
     }
     
     @IBAction func EventButtonPress(_ sender: Any) {
         print("EVENTBUTTONPRESS")
+        self.performSegue(withIdentifier: "toEventView", sender: self)
     }
     
     @IBAction func DateButtonPress(_ sender: Any) {
         print("DATEBUTTONPRESS")
+        self.performSegue(withIdentifier: "toDateView", sender: self)
     }
     
     
     @IBAction func LocationButtonPress(_ sender: Any) {
         print("LOCATIONBUTTONPRESS")
+        self.performSegue(withIdentifier: "toMapView", sender: self)
     }
     
     

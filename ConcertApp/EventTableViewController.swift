@@ -8,13 +8,13 @@
 
 import UIKit
 
-class EventTableViewController: UITableViewController, UISearchResultsUpdating {
+class EventTableViewController: UITableViewController /*, UISearchResultsUpdating*/ {
 
-    var searchController : UISearchController!
+    //var searchController : UISearchController!
     
-    func updateSearchResults(for searchController: UISearchController) {
-        tableView.reloadData()
-    }
+//    func updateSearchResults(for searchController: UISearchController) {
+//        tableView.reloadData()
+//    }
     
     var EventName : String = "Event"
     var EventDate: String = "Date"
@@ -22,28 +22,40 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating {
     var fetchName: String = "\0"
     var fetchLocation: String = "\0"
     var TableData:[String: AnyObject] = [:]
+    var VenueID: String = ""
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     //var searchResults = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.alwaysBounceVertical = false
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(activityIndicator)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.searchController = UISearchController(searchResultsController: nil)
-        self.searchController.searchBar.sizeToFit()
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.searchResultsUpdater = self
-        self.searchController.dimsBackgroundDuringPresentation = false
-        self.tableView.tableHeaderView = self.searchController.searchBar
+//        self.searchController = UISearchController(searchResultsController: nil)
+//        self.searchController.searchBar.sizeToFit()
+//        self.searchController.hidesNavigationBarDuringPresentation = false
+//        self.searchController.searchResultsUpdater = self
+//        self.searchController.dimsBackgroundDuringPresentation = false
+//        self.tableView.tableHeaderView = self.searchController.searchBar
         //makeGetCall(input: "oracle+arena")
-        get_data_from_url(url: "http://api.jambase.com/venues?name=oracle&page=0&api_key=sbxzadxwszauykseun6pdj3u")
+        
         
         //makeGetCall()
         //tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+//        get_data_from_url(url: "http://api.jambase.com/venues?name=oracle&page=0&api_key=sbxzadxwszauykseun6pdj3u")
+        
+        get_data_from_url(url: "http://api.jambase.com/venues?name=oracle&page=0&api_key=buenzrs3exbzhb7f9fbrbvyz")
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,33 +75,41 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating {
         
         if TableData["Venues"]?.count != nil
         {
-            return TableData["Venues"]!.count
+            return (TableData["Venues"]!.count)
         }
         
         else
         {
-            return 0
+            return 1
         }
         //return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->  UITableViewCell {
+        if indexPath.row == 0 {
+            let cellIdentifier = "EventSearchCell"
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+            return cell
+        }
+        else {
         let cellIdentifier = "EventCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! EventTableViewCell
         
         //if searchController.isActive {
         //let temp : String = makeGetCall(input: "oracle+arena")
-        cell.EventName.text = (TableData["Venues"]![indexPath.row]! as! [String: Any])["Name"]! as? String
-        cell.EventDate.text = ((TableData["Venues"]![indexPath.row]! as! [String: Any])["City"]! as? String)! + ", " + ((TableData["Venues"]![indexPath.row]! as! [String: Any])["State"]! as? String)!
+        cell.EventName.text = (TableData["Venues"]![indexPath.row - 1]! as! [String: Any])["Name"]! as? String
+        cell.EventDate.text = ((TableData["Venues"]![indexPath.row - 1]! as! [String: Any])["City"]! as? String)! + ", " + ((TableData["Venues"]![indexPath.row]! as! [String: Any])["State"]! as? String)!
         cell.EventImage.image = UIImage(named: "icon_event")
         //}
         return cell
+        }
     }
     
     // http://api.jambase.com/venues?name=oracle+arena&page=0&api_key=sbxzadxwszauykseun6pdj3u&o=json
 
     func get_data_from_url(url:String)
     {
+        self.activityIndicator.startAnimating()
         let httpMethod = "GET"
         let timeout = 15
         let url = URL(string: url)
@@ -138,8 +158,15 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating {
     {
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
+            self.activityIndicator.stopAnimating()
             return
         })
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        if indexPath.row != 0{
+        VenueID = "\((TableData["Venues"]![indexPath.row - 1]! as! [String: Any])["Id"]!)"
+        //print((TableData["Venues"]![indexPath.row]! as! [String: Any])["Id"]!)
+        }
     }
 //    func makeGetCall() {
 //        let url_str = "http://api.jambase.com/venues?name=oracle+arena&page=0&api_key=sbxzadxwszauykseun6pdj3u"
@@ -254,14 +281,23 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
+    let SegueIdentifier = "VenueSegue"
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == SegueIdentifier{
+            if let VenueDetail = segue.destination as? VenueViewController{
+                if let indexPath = tableView.indexPathForSelectedRow {
+                VenueDetail.VenueID = "\((TableData["Venues"]![indexPath.row - 1]! as! [String: Any])["Id"]!)"
+                }
+            }
+        }
+        
     }
-    */
+ 
 
 }

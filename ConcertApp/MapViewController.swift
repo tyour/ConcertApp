@@ -43,6 +43,32 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     
     @IBAction func searchButtonPress(_ sender: Any) {
+        let mySearchReq = MKLocalSearchRequest()
+        mySearchReq.naturalLanguageQuery = searchField.text
+        mySearchReq.region = self.myMap.region
+        
+        let localSearch = MKLocalSearch(request: mySearchReq)
+        localSearch.start(completionHandler: {
+            response, error in
+            if error != nil {
+                print(error!)
+                return
+            }
+            
+            let myMapItems = response!.mapItems as [MKMapItem]
+            var nearbyAnns : [MKAnnotation] = []
+            if myMapItems.count > 0 {
+                for item in myMapItems {
+                    let annotation = MKPointAnnotation()
+                    annotation.title = item.name
+                    annotation.subtitle = item.phoneNumber
+                    annotation.coordinate = (item.placemark.location?.coordinate)!
+                    nearbyAnns.append(annotation)
+                }
+            }
+            self.myMap.showAnnotations(nearbyAnns, animated: true)
+        })
+        
     }
     
     
