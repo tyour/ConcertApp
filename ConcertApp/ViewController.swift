@@ -42,8 +42,7 @@ class ViewController: UIViewController {
         
         // Cache default data to data object
         let route = "/events?zipCode=\(zipcode)&radius=\(radius)&startDate=\(todays_date)&endDate=\(future_date)&page=0&api_key=832t889gh3n8728fzxthr644"
-        //data.default_data = Utils.makeGetCall(route: route)
-        //print("\(data.default_data)")
+        data.default_data = Utils.makeGetCall(route: route)
     }
     
     override func didReceiveMemoryWarning() {
