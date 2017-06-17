@@ -25,6 +25,7 @@ class DateViewController: UIViewController {
         else {
             subtitle.text = "Format: YYYY-mm-dd"
             subtitle.textColor = UIColor.black
+            self.performSegue(withIdentifier: "toDateTableView", sender: self)
         }
     }
     
@@ -78,6 +79,7 @@ class DateViewController: UIViewController {
                 }
             }
         }
+        // Make sure the start date is not before today's date
         let todays_date = Utils.todaysDate()
         idx = todays_date.index(todays_date.startIndex, offsetBy:4)
         let now_year = Int(todays_date.substring(to: idx))!

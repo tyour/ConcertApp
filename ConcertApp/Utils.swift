@@ -48,23 +48,24 @@ class Utils {
     
     // Makes a get call to jambase api
     static func makeGetCall(route: String) -> [String: AnyObject] {
-        
+        print("MAKING CAL!!!!!!!\n\n\n\n\n")
         var request_complete = false
         var data_holder: [String: AnyObject] = [:]
         let url_str = API_BASE_URL + route
-        
+        print("1")
         // Set up the URL request
         let apiEndpoint: String = url_str
         guard let url = URL(string: apiEndpoint) else {
             print("Error: cannot create URL")
             return [:]
         }
+        print("2")
         let urlRequest = URLRequest(url: url)
-        
+        print("3")
         // set up the session
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
-        
+        print("4")
         // make the request
         let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             // check for any errors
@@ -77,6 +78,7 @@ class Utils {
                 print("Error: did not receive data")
                 return
             }
+            print("5")
             // parse the result as JSON, since that's what the API provides
             do {
                 guard let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: AnyObject] else {
@@ -90,8 +92,11 @@ class Utils {
                 return
             }
         })
+        print("6")
         task.resume()
+        print("7")
         while(!request_complete) { continue }
+        print("8")
         return data_holder
     }
     

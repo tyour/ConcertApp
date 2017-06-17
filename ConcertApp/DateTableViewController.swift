@@ -31,16 +31,8 @@ class DateTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         print("Hello World")
-        if TableData["Events"]?.count != nil
-        {
-            return TableData["Events"]!.count
-        }
-            
-        else
-        {
-            return 0
-        }
-        //return 1
+        if TableData["Events"]?.count != nil { return TableData["Events"]!.count }
+        else { return 0 }
     }
     
     

@@ -5,11 +5,18 @@
 //  Copyright © 2017 Team2. All rights reserved.
 //
 
+/*
+    API KEYS
+    m4fkuuhzjcsndvp2xmqg4wkb
+    832t889gh3n8728fzxthr644
+*/
+
 //Main Page ViewController
 import UIKit
 
 class ViewController: UIViewController {
     var data = DataSingleton.getInstance()
+    let api_key = "m4fkuuhzjcsndvp2xmqg4wkb"
     
     //Buttons for navigation cluster
     @IBOutlet var ArtistButton: UIButton!
@@ -41,8 +48,8 @@ class ViewController: UIViewController {
         let zipcode = "95110"
         
         // Cache default data to data object
-        let route = "/events?zipCode=\(zipcode)&radius=\(radius)&startDate=\(todays_date)&endDate=\(future_date)&page=0&api_key=832t889gh3n8728fzxthr644"
-        //data.default_data = Utils.makeGetCall(route: route)
+        let route = "/events?zipCode=\(zipcode)&radius=\(radius)&startDate=\(todays_date)&endDate=\(future_date)&page=0&api_key=" + api_key
+        data.default_data = Utils.makeGetCall(route: route)
     }
     
     override func didReceiveMemoryWarning() {
