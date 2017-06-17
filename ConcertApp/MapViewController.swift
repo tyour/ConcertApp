@@ -15,6 +15,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet var myMap: MKMapView!
     @IBOutlet var searchField: UITextField!
     
+    
+    
+    
     var myLocMgr = CLLocationManager()
     var myGeoCoder = CLGeocoder()
     var showPlacemark = CLPlacemark()
@@ -33,19 +36,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         myMap.delegate = self
         // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    
-    @IBAction func searchButtonPress(_ sender: Any) {
+        
         let mySearchReq = MKLocalSearchRequest()
-        mySearchReq.naturalLanguageQuery = searchField.text
+        mySearchReq.naturalLanguageQuery = "coffee"
         mySearchReq.region = self.myMap.region
+        //searchField.text
         
         let localSearch = MKLocalSearch(request: mySearchReq)
         localSearch.start(completionHandler: {
@@ -61,7 +56,69 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 for item in myMapItems {
                     let annotation = MKPointAnnotation()
                     annotation.title = item.name
-                    annotation.subtitle = item.phoneNumber
+                    annotation.subtitle = item.description
+                    annotation.coordinate = (item.placemark.location?.coordinate)!
+                    nearbyAnns.append(annotation)
+                }
+            }
+            self.myMap.showAnnotations(nearbyAnns, animated: true)
+        })
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Table view data source
+    
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
+//    
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        
+////        if TableData["Venues"]?.count != nil
+////        {
+////            return (TableData["Venues"]!.count)
+////        }
+////            
+////        else
+////        {
+////            return 1
+////        }
+//        //return 1
+//    }
+//    
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->  UITableViewCell {
+//
+//    //empty
+//    }
+
+    
+    @IBAction func searchButtonPress(_ sender: Any) {
+        let mySearchReq = MKLocalSearchRequest()
+        mySearchReq.naturalLanguageQuery = "coffee"
+        mySearchReq.region = self.myMap.region
+        //searchField.text
+        
+        let localSearch = MKLocalSearch(request: mySearchReq)
+        localSearch.start(completionHandler: {
+            response, error in
+            if error != nil {
+                print(error!)
+                return
+            }
+            
+            let myMapItems = response!.mapItems as [MKMapItem]
+            var nearbyAnns : [MKAnnotation] = []
+            if myMapItems.count > 0 {
+                for item in myMapItems {
+                    let annotation = MKPointAnnotation()
+                    annotation.title = item.name
+                    annotation.subtitle = item.description
                     annotation.coordinate = (item.placemark.location?.coordinate)!
                     nearbyAnns.append(annotation)
                 }
@@ -70,10 +127,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         })
         
     }
-    
-    
-    
-    
     
 
     /*
