@@ -50,23 +50,15 @@ class ViewController: UIViewController {
     
     //Button Cluster Actions
     @IBAction func ArtistButtonPress(_ sender: Any) {
-        print("ARTISTBUTTONPRESS")
         self.performSegue(withIdentifier: "toArtistView", sender: self)
     }
-    
     @IBAction func EventButtonPress(_ sender: Any) {
-        print("EVENTBUTTONPRESS")
         self.performSegue(withIdentifier: "toEventView", sender: self)
     }
-    
     @IBAction func DateButtonPress(_ sender: Any) {
-        print("DATEBUTTONPRESS")
         self.performSegue(withIdentifier: "toDateView", sender: self)
     }
-    
-    
     @IBAction func LocationButtonPress(_ sender: Any) {
-        print("LOCATIONBUTTONPRESS")
         self.performSegue(withIdentifier: "toMapView", sender: self)
     }
     

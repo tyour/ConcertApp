@@ -48,49 +48,32 @@ class DateTableViewController: UITableViewController {
         
         // Get event date
         let date_str: String = (TableData["Events"]![indexPath.row] as! [String: Any])["Date"] as! String
-                    // Get time and date
-                    var s_idx = date_str.index(date_str.startIndex, offsetBy:0)
-                    var e_idx = date_str.index(date_str.startIndex, offsetBy:10)
-                    let date: String = date_str.substring(with: s_idx..<e_idx)
-                    s_idx = date_str.index(date_str.startIndex, offsetBy:11)
-                    e_idx = date_str.index(date_str.endIndex, offsetBy:0)
-                    let time: String = date_str.substring(with: s_idx..<e_idx)
-                    
-                    // Get date fields
-                    var idx = date.index(date.startIndex, offsetBy:4)
-                    let year = date.substring(to: idx)
-                    s_idx = date.index(date.startIndex, offsetBy:5)
-                    e_idx = date.index(date.endIndex, offsetBy:-3)
-                    let month = date.substring(with: s_idx..<e_idx)
-                    s_idx = date.index(date.startIndex, offsetBy:8)
-                    e_idx = date.index(date.endIndex, offsetBy:0)
-                    let day = date.substring(with: s_idx..<e_idx)
-                    
-                    //Get time fields
-                    s_idx = time.index(time.startIndex, offsetBy:0)
-                    e_idx = time.index(time.startIndex, offsetBy:2)
-                    var hour = Int(time.substring(with: s_idx..<e_idx))!
-                    s_idx = time.index(time.startIndex, offsetBy:2)
-                    e_idx = time.index(time.endIndex, offsetBy:-3)
-                    let the_rest = time.substring(with: s_idx..<e_idx)
-                    var ampm = "AM"
-                    if hour >= 12 {
-                        if hour == 24 || hour == 12 {
-                            hour = 12
-                        }
-                        else {
-                            hour = hour - 12
-                            ampm = "PM"
-                        }
-                    }
-        if hour == 0 {
-            hour = 12
-        }
-                    let the_time: String = String(hour) + the_rest + ampm
-                    cell.event_date.text = "\(month)-\(day)-\(year) \(the_time)"
-
-        //cell.event_date.text = "yo"
+        cell.event_date.text = Utils.getTimeString(date_str: date_str)
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "dateToDetail" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let i = indexPath.row
+                let vc = segue.destination as! DetailViewController
+                let events_obj = TableData["Events"]![i] as! [String: Any]
+                let date_str: String = events_obj["Date"] as! String
+                let venue_str: String = (events_obj["Venue"] as! [String: Any])["Name"] as! String
+                let url: String = (events_obj["Venue"] as! [String: Any])["Url"] as! String
+                let artists = events_obj["Artists"] as! Array<[String: Any]>
+                var alist_text = ""
+                for a in artists {
+                    alist_text += "-\(a)\n"
+                }
+                print("\(artists[0]["Name"]!)")
+                //let ev_name: String = "\(artists[0]["Name"]!)"
+                vc.event_name.text = alist_text
+                vc.event_date.text = Utils.getTimeString(date_str: date_str)
+                vc.event_venue.text = venue_str
+                vc.artist_list.text = alist_text
+                vc.website_url = url
+            }
+        }
+    }
 }

@@ -19,7 +19,7 @@ class Utils {
     
     static private let SECONDS_IN_DAY: Double = 86400
     static private let API_BASE_URL: String = "http://api.jambase.com"
-    static public let api_key = "m4fkuuhzjcsndvp2xmqg4wkb"
+    static public let api_key = "832t889gh3n8728fzxthr644"
     static public let radius = "50"
     static public let zipcode = "95110"
     
@@ -53,6 +53,49 @@ class Utils {
         return result
     }
     
+    // Formats date for display, given format from api
+    static func getTimeString(date_str: String) -> String {
+        // Get time and date
+        var s_idx = date_str.index(date_str.startIndex, offsetBy:0)
+        var e_idx = date_str.index(date_str.startIndex, offsetBy:10)
+        let date: String = date_str.substring(with: s_idx..<e_idx)
+        s_idx = date_str.index(date_str.startIndex, offsetBy:11)
+        e_idx = date_str.index(date_str.endIndex, offsetBy:0)
+        let time: String = date_str.substring(with: s_idx..<e_idx)
+        
+        // Get date fields
+        let idx = date.index(date.startIndex, offsetBy:4)
+        let year = date.substring(to: idx)
+        s_idx = date.index(date.startIndex, offsetBy:5)
+        e_idx = date.index(date.endIndex, offsetBy:-3)
+        let month = date.substring(with: s_idx..<e_idx)
+        s_idx = date.index(date.startIndex, offsetBy:8)
+        e_idx = date.index(date.endIndex, offsetBy:0)
+        let day = date.substring(with: s_idx..<e_idx)
+        
+        //Get time fields
+        s_idx = time.index(time.startIndex, offsetBy:0)
+        e_idx = time.index(time.startIndex, offsetBy:2)
+        var hour = Int(time.substring(with: s_idx..<e_idx))!
+        s_idx = time.index(time.startIndex, offsetBy:2)
+        e_idx = time.index(time.endIndex, offsetBy:-3)
+        let the_rest = time.substring(with: s_idx..<e_idx)
+        var ampm = "AM"
+        if hour >= 12 {
+            if hour == 24 || hour == 12 {
+                hour = 12
+            }
+            else {
+                hour = hour - 12
+                ampm = "PM"
+            }
+        }
+        if hour == 0 {
+            hour = 12
+        }
+        let the_time: String = String(hour) + the_rest + ampm
+        return "\(month)-\(day)-\(year) \(the_time)"
+    }
     
     
     // Makes a get call to jambase api
