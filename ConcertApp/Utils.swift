@@ -6,6 +6,12 @@
 //  Copyright © 2017 Team2. All rights reserved.
 //
 
+/*
+ API KEYS
+ m4fkuuhzjcsndvp2xmqg4wkb
+ 832t889gh3n8728fzxthr644
+ */
+
 import Foundation
 
 class Utils {
@@ -13,6 +19,9 @@ class Utils {
     
     static private let SECONDS_IN_DAY: Double = 86400
     static private let API_BASE_URL: String = "http://api.jambase.com"
+    static public let api_key = "m4fkuuhzjcsndvp2xmqg4wkb"
+    static public let radius = "50"
+    static public let zipcode = "95110"
     
     
     // Empty constructor

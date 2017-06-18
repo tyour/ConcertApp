@@ -25,9 +25,8 @@ class DateViewController: UIViewController {
         else {
             subtitle.text = "Format: YYYY-mm-dd"
             subtitle.textColor = UIColor.black
-            print("doing segue")
+            data.date_data = Utils.makeGetCall(route: "/events?zipcode=\(Utils.zipcode)&radius=\(Utils.radius)&startDate=\(st)&endDate=\(ed)&page=0&api_key=\(Utils.api_key)")
             self.performSegue(withIdentifier: "toDateTableView", sender: self)
-            print("did the segue")
         }
     }
     

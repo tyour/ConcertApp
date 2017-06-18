@@ -12,10 +12,9 @@ import UIKit
 final class DataSingleton {
     static let instance = DataSingleton()
     
-    // Stores data that is fetched on launch
+    // Stores data that can be accessed across classes
     var default_data : [String: AnyObject] = [:]
-    // Array of data from api calls made dynamically by user
-    var dynamic_data : [ [String: AnyObject] ] = []
+    var date_data : [String: AnyObject] = [:]
     
     private init() {}
     

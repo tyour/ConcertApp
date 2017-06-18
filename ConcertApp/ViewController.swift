@@ -5,18 +5,11 @@
 //  Copyright © 2017 Team2. All rights reserved.
 //
 
-/*
-    API KEYS
-    m4fkuuhzjcsndvp2xmqg4wkb
-    832t889gh3n8728fzxthr644
-*/
-
 //Main Page ViewController
 import UIKit
 
 class ViewController: UIViewController {
     var data = DataSingleton.getInstance()
-    let api_key = "m4fkuuhzjcsndvp2xmqg4wkb"
     
     //Buttons for navigation cluster
     @IBOutlet var ArtistButton: UIButton!
@@ -44,11 +37,9 @@ class ViewController: UIViewController {
         // Get current date and generate future date
         let todays_date = Utils.todaysDate()
         let future_date = Utils.increment(date: todays_date, by: 10) //Get the date of 10 days from now
-        let radius = "50"
-        let zipcode = "95110"
         
         // Cache default data to data object
-        let route = "/events?zipCode=\(zipcode)&radius=\(radius)&startDate=\(todays_date)&endDate=\(future_date)&page=0&api_key=" + api_key
+        let route = "/events?zipCode=\(Utils.zipcode)&radius=\(Utils.radius)&startDate=\(todays_date)&endDate=\(future_date)&page=0&api_key=" + Utils.api_key
         data.default_data = Utils.makeGetCall(route: route)
     }
     
