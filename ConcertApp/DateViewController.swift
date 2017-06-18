@@ -25,7 +25,9 @@ class DateViewController: UIViewController {
         else {
             subtitle.text = "Format: YYYY-mm-dd"
             subtitle.textColor = UIColor.black
+            print("doing segue")
             self.performSegue(withIdentifier: "toDateTableView", sender: self)
+            print("did the segue")
         }
     }
     
