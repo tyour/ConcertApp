@@ -15,15 +15,16 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var event_venue: UILabel!
     @IBOutlet weak var artist_list: UITextView!
     @IBOutlet weak var link_button: UIButton!
-    var website_url: String = ""
     
+    // SET THESE
+    var website_url: String = ""
     var ename : String!
     var edate : String!
     var evenue : String!
     var alist: String!
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        print("button pressed")
+        UIApplication.shared.openURL(NSURL(string: website_url)! as URL)
     }
     
     override func viewDidLoad() {
