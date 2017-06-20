@@ -25,6 +25,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var showPlacemark = CLPlacemark()
     
     var toAddr : String?
+    var ResultCount = 0
     
     
     override func viewDidLoad() {
@@ -68,6 +69,8 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     annotation.subtitle = item.description
                     annotation.coordinate = (item.placemark.location?.coordinate)!
                     nearbyAnns.append(annotation)
+                    self.ResultCount = self.ResultCount + 1
+                    print(String(self.ResultCount))
                 }
             }
             self.myMap.showAnnotations(nearbyAnns, animated: true)
@@ -89,22 +92,11 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        
-//        if TableData["Venues"]?.count != nil
-//        {
-//            return (TableData["Venues"]!.count)
-//        }
-//            
-//        else
-//        {
-//            return 1
-//        }
-        return 1
+        print("Final Count" + String(ResultCount))
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->  UITableViewCell {
-
-
 
             let cellIdentifier = "MapResultCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MapTableViewCell
