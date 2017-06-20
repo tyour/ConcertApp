@@ -17,13 +17,21 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var link_button: UIButton!
     var website_url: String = ""
     
+    var ename : String!
+    var edate : String!
+    var evenue : String!
+    var alist: String!
+    
     @IBAction func buttonPressed(_ sender: UIButton) {
         print("button pressed")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.event_name.text = self.ename
+        self.event_date.text = self.edate
+        self.event_venue.text = self.evenue
+        self.artist_list.text = self.alist
     }
     
     override func didReceiveMemoryWarning() {
