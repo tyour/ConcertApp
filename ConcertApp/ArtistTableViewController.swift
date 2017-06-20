@@ -12,17 +12,12 @@ import CoreData
 class ArtistTableViewController: UITableViewController, UISearchResultsUpdating {
 
     var searchController : UISearchController!
-    var MyArtist : [String] = []
+    var MyEvent : [EventObject] = []
     var artistImage : [UIImage] = [#imageLiteral(resourceName: "icon_artist")]
     var fetchName: String = "\0"
     var TableData:[String: AnyObject] = DataSingleton.getInstance().default_data
     
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        tableView.reloadData()
-    }
-
-    var searchResults : [String] = []
+    var searchResults : [EventObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +41,8 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
     }
 
     // MARK: - Table view data source
-
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -55,14 +51,19 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         print("Hello World")
-        if TableData["Events"]?.count != nil
-        {
-            return TableData["Events"]!.count
+        if searchController.isActive {
+            let searchCount = searchResults.count
+            return searchResults.count
         }
+        //else if TableData["Events"]?.count != nil
+        //{
+        //    return TableData["Events"]!.count
+        //}
             
         else
         {
-            return 0
+            let rowCount = TableData["Events"]!.count
+            return TableData["Events"]!.count
         }
         //return 1
     }
@@ -72,9 +73,20 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
         let cellIdentifier = "ArtistTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as!
             ArtistTableViewCell
+        var cellItem: EventObject
+        MyEvent.append(EventObject(iName: " ", iArtist: ((((TableData["Events"]![indexPath.row] as! [String: Any])["Artists"] as! Array<[String: Any]>)[0])["Name"] as? String)!))
+        if searchController.isActive {
+            cellItem = searchResults[indexPath.row]
+            
+        }
+        else {
+            cellItem = MyEvent[indexPath.row]
+        }
         // Configure the cell...
-        cell.ArtistName.text = ((((TableData["Events"]![indexPath.row] as! [String: Any])["Artists"] as! Array<[String: Any]>)[0])["Name"] as? String)
-        MyArtist.append(cell.ArtistName.text!)
+        
+        
+        
+        cell.ArtistName?.text = cellItem.iArtist
         print(cell.ArtistName)
         
         // Fade-in animation of cells. We set initial state, duration, and final state
@@ -139,9 +151,9 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
         // Pass the selected object to the new view controller.
     }
     */
-    /*func filterContentForSearchText(searchText: String) {
-        searchResults = MyArtist.filter({ (ArtistItem: String) -> Bool in
-            let nameMatch = MyArtist.range(of: searchText, options: String.CompareOptions.caseInsensitive)
+    func filterContentForSearchText(searchText: String) {
+        searchResults = MyEvent.filter({ (ArtistItem: EventObject) -> Bool in
+            let nameMatch = ArtistItem.iArtist.range(of: searchText, options: String.CompareOptions.caseInsensitive)
             return nameMatch != nil
         })
     }
@@ -151,5 +163,5 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
             filterContentForSearchText(searchText: textToSearch)
             tableView.reloadData()
         }
-    }*/
+    }
 }
