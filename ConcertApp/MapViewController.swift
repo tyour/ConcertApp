@@ -18,7 +18,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet var tableView: UITableView!
     
     
-    
+    var data = DataSingleton.getInstance().default_data
     
     var myLocMgr = CLLocationManager()
     var myGeoCoder = CLGeocoder()
@@ -29,6 +29,8 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let events_obj = data["Events"] as! [Any]
+        print("\(events_obj)")
         tableView.delegate = self
         tableView.dataSource = self
         myLocMgr.requestWhenInUseAuthorization()
@@ -36,6 +38,10 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         if status == CLAuthorizationStatus.authorizedWhenInUse {
             self.myMap.showsUserLocation = true
         }
+        
+//        for event in events_obj {
+//            print(event["Artists"] as! [Any])
+//        }
         
         myMap.delegate = self
         // Do any additional setup after loading the view.
