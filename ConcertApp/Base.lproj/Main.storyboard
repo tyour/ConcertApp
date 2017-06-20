@@ -500,7 +500,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="92" id="zuZ-we-zKI">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapResultCell" rowHeight="92" id="zuZ-we-zKI" customClass="MapTableViewCell" customModule="ConcertApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="411" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zuZ-we-zKI" id="s0N-48-B0o">
@@ -527,6 +527,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="MapResultDistance" destination="HAy-os-eM8" id="d3n-fm-Doo"/>
+                                            <outlet property="MapResultImage" destination="jlE-oz-vch" id="9Tc-Lc-lwp"/>
+                                            <outlet property="MapResultName" destination="jOG-ir-s2b" id="WpB-6M-4LU"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -536,6 +541,7 @@
                     <connections>
                         <outlet property="myMap" destination="Z22-Mq-fRI" id="RuH-00-RBa"/>
                         <outlet property="searchField" destination="RxY-gJ-Zjz" id="bGJ-at-exL"/>
+                        <outlet property="tableView" destination="itf-we-2SQ" id="rxj-7D-3uk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ak-dZ-xuZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

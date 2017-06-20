@@ -10,8 +10,11 @@ import UIKit
 
 class MapTableViewCell: UITableViewCell {
 
+    @IBOutlet var MapResultImage: UIImageView!
     
+    @IBOutlet var MapResultName: UILabel!
     
+    @IBOutlet var MapResultDistance: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

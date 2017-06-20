@@ -15,6 +15,8 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet var myMap: MKMapView!
     @IBOutlet var searchField: UITextField!
     
+    @IBOutlet var tableView: UITableView!
+    
     
     
     
@@ -27,7 +29,8 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.delegate = self
+        tableView.dataSource = self
         myLocMgr.requestWhenInUseAuthorization()
         let status = CLLocationManager.authorizationStatus()
         if status == CLAuthorizationStatus.authorizedWhenInUse {
@@ -63,6 +66,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             }
             self.myMap.showAnnotations(nearbyAnns, animated: true)
         })
+    self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,9 +101,12 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 
 
             let cellIdentifier = "MapResultCell"
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MapTableViewCell
+        cell.MapResultName.text = "Placeholder Name"
+        cell.MapResultDistance.text = "10 Miles"
+        cell.MapResultImage.image = UIImage(named: "icon_location")
 
-            return cell
+        return cell
         
     }
 
