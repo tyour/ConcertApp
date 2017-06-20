@@ -22,6 +22,7 @@
 		415AC2A71EE65196002819D6 /* ConcertApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 415AC2A51EE65196002819D6 /* ConcertApp.xcdatamodeld */; };
 		415AC2A91EE65196002819D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 415AC2A81EE65196002819D6 /* Assets.xcassets */; };
 		415AC2AC1EE65196002819D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 415AC2AA1EE65196002819D6 /* LaunchScreen.storyboard */; };
+		41962F871EF8B6CE00EF06E3 /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41962F861EF8B6CE00EF06E3 /* MapTableViewCell.swift */; };
 		634277EF1EF11D9C00C13DCA /* VenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634277EE1EF11D9C00C13DCA /* VenueViewController.swift */; };
 		6344B5441EF26B9300824182 /* VenueDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6344B5431EF26B9300824182 /* VenueDetailTableViewCell.swift */; };
 		C20D0CA31EEF85F90099EF87 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D0CA21EEF85F90099EF87 /* ArtistTableViewCell.swift */; };
@@ -49,6 +50,7 @@
 		415AC2A81EE65196002819D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		415AC2AB1EE65196002819D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		415AC2AD1EE65196002819D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41962F861EF8B6CE00EF06E3 /* MapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
 		634277EE1EF11D9C00C13DCA /* VenueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VenueViewController.swift; path = ../VenueViewController.swift; sourceTree = "<group>"; };
 		6344B5431EF26B9300824182 /* VenueDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueDetailTableViewCell.swift; sourceTree = "<group>"; };
 		C20D0CA21EEF85F90099EF87 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				400F63C01EF1022F00D0F8BD /* Utils.swift */,
 				415AC2A21EE65196002819D6 /* Main.storyboard */,
 				40925EEF1EF7233700502F23 /* DetailViewController.swift */,
+				41962F861EF8B6CE00EF06E3 /* MapTableViewCell.swift */,
 				415AC2A01EE65196002819D6 /* ViewController.swift */,
 				C27DC53A1EE8E7AA00BBF207 /* ArtistTableViewController.swift */,
 				C20D0CA21EEF85F90099EF87 /* ArtistTableViewCell.swift */,
@@ -197,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41962F871EF8B6CE00EF06E3 /* MapTableViewCell.swift in Sources */,
 				407BF0851EF612110071CBF0 /* DateTableViewCell.swift in Sources */,
 				634277EF1EF11D9C00C13DCA /* VenueViewController.swift in Sources */,
 				C27DC53B1EE8E7AA00BBF207 /* ArtistTableViewController.swift in Sources */,

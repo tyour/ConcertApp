@@ -64,14 +64,14 @@ class DateTableViewController: UITableViewController {
                 let artists = events_obj["Artists"] as! Array<[String: Any]>
                 var alist_text = ""
                 for a in artists {
-                    alist_text += "-\(a)\n"
+                    var aname = String(describing: a["Name"]!)
+                    alist_text += "\(aname)\n"
                 }
-                print("\(artists[0]["Name"]!)")
-                //let ev_name: String = "\(artists[0]["Name"]!)"
-                vc.event_name.text = alist_text
-                vc.event_date.text = Utils.getTimeString(date_str: date_str)
-                vc.event_venue.text = venue_str
-                vc.artist_list.text = alist_text
+                let ev_name: String = "\(artists[0]["Name"]!)"
+                vc.ename = ev_name
+                vc.edate = Utils.getTimeString(date_str: date_str)
+                vc.evenue = venue_str
+                vc.alist = alist_text
                 vc.website_url = url
             }
         }
