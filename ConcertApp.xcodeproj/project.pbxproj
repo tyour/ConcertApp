@@ -25,6 +25,7 @@
 		634277EF1EF11D9C00C13DCA /* VenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634277EE1EF11D9C00C13DCA /* VenueViewController.swift */; };
 		6344B5441EF26B9300824182 /* VenueDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6344B5431EF26B9300824182 /* VenueDetailTableViewCell.swift */; };
 		C20D0CA31EEF85F90099EF87 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D0CA21EEF85F90099EF87 /* ArtistTableViewCell.swift */; };
+		C2590C031EF8B6CB00ECCDDA /* EventObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2590C021EF8B6CB00ECCDDA /* EventObject.swift */; };
 		C27DC53B1EE8E7AA00BBF207 /* ArtistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27DC53A1EE8E7AA00BBF207 /* ArtistTableViewController.swift */; };
 		E9299F971EF3573100C08099 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9299F961EF3573100C08099 /* CoreLocation.framework */; };
 		E9299F991EF3575100C08099 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9299F981EF3575100C08099 /* MapKit.framework */; };
@@ -51,6 +52,7 @@
 		634277EE1EF11D9C00C13DCA /* VenueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VenueViewController.swift; path = ../VenueViewController.swift; sourceTree = "<group>"; };
 		6344B5431EF26B9300824182 /* VenueDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueDetailTableViewCell.swift; sourceTree = "<group>"; };
 		C20D0CA21EEF85F90099EF87 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
+		C2590C021EF8B6CB00ECCDDA /* EventObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventObject.swift; sourceTree = "<group>"; };
 		C27DC53A1EE8E7AA00BBF207 /* ArtistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewController.swift; sourceTree = "<group>"; };
 		E9299F961EF3573100C08099 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E9299F981EF3575100C08099 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -72,6 +74,7 @@
 		415AC2921EE65196002819D6 = {
 			isa = PBXGroup;
 			children = (
+				C2590C021EF8B6CB00ECCDDA /* EventObject.swift */,
 				415AC29D1EE65196002819D6 /* ConcertApp */,
 				415AC29C1EE65196002819D6 /* Products */,
 				E9299F951EF3573100C08099 /* Frameworks */,
@@ -207,6 +210,7 @@
 				400F63C11EF1022F00D0F8BD /* Utils.swift in Sources */,
 				2A5B3EB81EE8EC5E00EC4030 /* EventTableViewCell.swift in Sources */,
 				C20D0CA31EEF85F90099EF87 /* ArtistTableViewCell.swift in Sources */,
+				C2590C031EF8B6CB00ECCDDA /* EventObject.swift in Sources */,
 				4009B5451EF5C83400ED5E06 /* DateTableViewController.swift in Sources */,
 				415AC29F1EE65196002819D6 /* AppDelegate.swift in Sources */,
 				410D230F1EEF8582004E23BC /* MapViewController.swift in Sources */,
