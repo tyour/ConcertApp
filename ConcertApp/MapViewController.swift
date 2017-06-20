@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, MKMapViewDelegate {
 
     @IBOutlet var myMap: MKMapView!
     @IBOutlet var searchField: UITextField!
@@ -72,30 +72,36 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     // MARK: - Table view data source
     
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
-//    
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        
-////        if TableData["Venues"]?.count != nil
-////        {
-////            return (TableData["Venues"]!.count)
-////        }
-////            
-////        else
-////        {
-////            return 1
-////        }
-//        //return 1
-//    }
-//    
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->  UITableViewCell {
-//
-//    //empty
-//    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        
+//        if TableData["Venues"]?.count != nil
+//        {
+//            return (TableData["Venues"]!.count)
+//        }
+//            
+//        else
+//        {
+//            return 1
+//        }
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->  UITableViewCell {
+
+
+
+            let cellIdentifier = "MapResultCell"
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+
+            return cell
+        
+    }
 
     
     @IBAction func searchButtonPress(_ sender: Any) {
