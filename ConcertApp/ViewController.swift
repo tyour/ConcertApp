@@ -23,7 +23,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var BackgroundLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "concertbackground_formatted"))
+        
         
         BackgroundLabel.backgroundColor = UIColor.white
         BackgroundLabel.layer.cornerRadius = 20.0
