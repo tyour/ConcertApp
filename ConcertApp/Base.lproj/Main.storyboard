@@ -672,6 +672,7 @@
                                         <connections>
                                             <outlet property="ArtistName" destination="2MA-mB-2zU" id="dv1-n2-jlA"/>
                                             <outlet property="EventDate" destination="vJc-Xg-Et2" id="G2C-ns-WAp"/>
+                                            <segue destination="ew9-aj-QaH" kind="show" identifier="venueToDetail" id="WSO-NW-KJ0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -754,6 +755,6 @@
         <image name="icon_location" width="85" height="85"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U8t-g2-8bq"/>
+        <segue reference="WSO-NW-KJ0"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -38,7 +38,7 @@ class VenueViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     override func viewDidAppear(_ animated: Bool) {
         print(VenueID)
-        get_data_from_url(url: "http://api.jambase.com/events?venueId=" + VenueID + "&page=0&api_key=uwphnbt6vu4f2tebsgfapraw")
+        get_data_from_url(url: "http://api.jambase.com/events?venueId=" + VenueID + "&page=0&api_key=832t889gh3n8728fzxthr644")
     }
     
     override func didReceiveMemoryWarning() {
@@ -149,14 +149,26 @@ class VenueViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "venueToDetail" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let vc = segue.destination as! DetailViewController
+                let Date: String = ((TableData["Events"]![indexPath.row]! as! [String: Any])["Date"]! as? String)!
+                let index = Date.index(Date.startIndex, offsetBy: 10)
+                
+                vc.ename = ((((TableData["Events"]![indexPath.row] as! [String: Any])["Artists"] as! Array<[String: Any]>)[0])["Name"] as? String)
+                vc.edate = Date.substring(to: index)
+                vc.evenue = (((TableData["Events"]![indexPath.row] as! [String: Any])["Venue"] as! [String: Any])["Name"] as! String)
+                vc.alist = ((((TableData["Events"]![indexPath.row] as! [String: Any])["Artists"] as! Array<[String: Any]>)[0])["Name"] as? String)
+                vc.website_url = (TableData["Events"]![indexPath.row] as! [String: Any])["TicketUrl"] as! String
+                
+                
+            }
+        }
+    }
+
     
 }
