@@ -24,11 +24,7 @@ class Utils {
     static public let radius = "50"
     static public let zipcode = "95110"
     
-    
-    // Empty constructor
-    init() {}
-    
-    
+    init() { }
     
     // Generates a date string in format yyy-MM-dd to pass to jambase api
     static func todaysDate() -> String {
@@ -38,8 +34,6 @@ class Utils {
         let result = formatter.string(from: date)
         return result
     }
-    
-    
     
     // Increments a date string in format yyyy-MM-dd by a number of days
     static func increment(date: String, by: Double) -> String {
