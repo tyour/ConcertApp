@@ -100,6 +100,9 @@ class BookmarksTableViewController: UITableViewController, NSFetchedResultsContr
         cell.EventImage?.image = #imageLiteral(resourceName: "icon_dj")
         cell.EventTime?.text = cellItem.iDate
 
+        // Fade-in animation of cells. We set initial state, duration, and final state
+        cell.alpha = 0
+        UIView.animate(withDuration: 2.5, animations: { cell.alpha = 1})
         return cell
     }
     
