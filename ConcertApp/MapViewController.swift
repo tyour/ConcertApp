@@ -29,9 +29,8 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     var toAddr : String?
     var ResultCount = 1
-    var namestore : [String] = []
-    var latstore : [Double] = []
-    var longstore : [Double] = []
+    var EventStore : [Double: MapEventObject] = [:]
+    var Results2Display : [MapEventObject] = []
     
    
     override func viewDidLoad() {
@@ -42,19 +41,20 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         //Reads JSON and creates three arrays that store the values
         for eventitem in events_obj {
             
-        var name = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Name"] as! String
-        var artist = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Longitude"] as! Double
-        var lat = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Latitude"] as! Double
-        var long = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Longitude"] as! Double
-            
+            var name = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Name"] as! String
+            var lat = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Latitude"] as! Double
+            var long = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Longitude"] as! Double
 
             if lat != 0.0 {
                 print("\(name)")
                 print("\(lat)")
                 print("\(long)")
-                namestore.append(name)
-                latstore.append(lat)
-                longstore.append(long)
+                let EventDist = DistCalc(CurrentLat: (myLocMgr.location?.coordinate.latitude)!,
+                                         CurrentLong: (myLocMgr.location?.coordinate.longitude)!,
+                                         LatValue: lat,
+                                         LongValue: long)
+                let obj = MapEventObject(iName: name, iLatitude: lat, iLongitude: long, iDistance: EventDist)
+                EventStore.updateValue(obj, forKey: EventDist)
             }
         }
         
@@ -62,13 +62,17 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         print(myLocMgr.location?.coordinate.latitude)
         print(myLocMgr.location?.coordinate.longitude)
         
-        for i in 1...3 {
-            let EventDist = DistCalc(CurrentLat: (myLocMgr.location?.coordinate.latitude)!,
-                 CurrentLong: (myLocMgr.location?.coordinate.longitude)!,
-                 LatValue: latstore[i],
-                 LongValue: longstore[i])
-        }
-            
+        // EventStore = [1.0:Foo], [1.5:Bar], [0.5:Baz], [0.2:Boo]
+        
+//       var sortedKeys = Array(EventStore.keys.sorted())
+//       
+//        print("\nSorted Keys")
+//        print(sortedKeys)
+//        print(sortedKeys.endIndex)
+//        for i in 0...sortedKeys.endIndex - 1 {
+//            print(sortedKeys[i])
+//            print(EventStore[sortedKeys[i]])
+//        }
 
         
         //Sets up tableView results
