@@ -10,8 +10,13 @@ import UIKit
 
 class VenueViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet var VenueLocation: UILabel!
+    @IBOutlet var VenueName: UILabel!
+    @IBOutlet var venueImage: UIImageView!
     @IBOutlet var tableView: UITableView!
     var VenueID: String = " "
+    var NameStr: String = ""
+    var LocationStr: String = ""
     var TableData:[String: AnyObject] = [:]
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     override func viewDidLoad() {
@@ -24,7 +29,10 @@ class VenueViewController: UIViewController, UITableViewDelegate, UITableViewDat
         activityIndicator.hidesWhenStopped = true
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         view.addSubview(activityIndicator)
-        
+        VenueName.text = NameStr
+        VenueLocation.text = LocationStr
+        venueImage.image = UIImage(named: "icon_event")
+        self.view.backgroundColor = UIColor.lightGray
         
         // Do any additional setup after loading the view.
     }

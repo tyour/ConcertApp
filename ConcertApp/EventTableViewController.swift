@@ -28,6 +28,8 @@ class EventTableViewController: UITableViewController , UISearchResultsUpdating 
     //    var TableData:[String: AnyObject] = Utils.makeGetCall(route: "/venues?zipCode=\(Utils.zipcode)&page=0&api_key=" + Utils.api_key)
     var TableData:[String: AnyObject] = Utils.makeGetCall(route: "/venues?zipCode=80465&page=0&api_key=" + Utils.api_key)
     var VenueID: String = ""
+    var VenueName: String = ""
+    var VenueLocation: String = ""
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     var searchResults : [EventObject] = []
@@ -121,7 +123,6 @@ class EventTableViewController: UITableViewController , UISearchResultsUpdating 
         else {
             
             cellItem = MyEvent[indexPath.row]
-            print(cellItem)
         }
         
         //if searchController.isActive {
@@ -351,6 +352,8 @@ class EventTableViewController: UITableViewController , UISearchResultsUpdating 
             if let VenueDetail = segue.destination as? VenueViewController{
                 if let indexPath = tableView.indexPathForSelectedRow {
                     VenueDetail.VenueID = ((TableData["Venues"]![indexPath.row]! as! [String: Any])["Id"]! as! NSNumber).stringValue
+                    VenueDetail.NameStr = MyEvent[indexPath.row].iVenue
+                    VenueDetail.LocationStr = MyEvent[indexPath.row].iDate
                 }
             }
         }
