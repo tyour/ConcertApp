@@ -7,8 +7,9 @@
 
 //Main Page ViewController
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
     var data = DataSingleton.getInstance()
     
     //Buttons for navigation cluster
@@ -61,7 +62,5 @@ class ViewController: UIViewController {
     @IBAction func LocationButtonPress(_ sender: Any) {
         self.performSegue(withIdentifier: "toMapView", sender: self)
     }
-    
-    
 }
 

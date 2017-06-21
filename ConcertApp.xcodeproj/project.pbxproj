@@ -29,6 +29,8 @@
 		C20D0CA31EEF85F90099EF87 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D0CA21EEF85F90099EF87 /* ArtistTableViewCell.swift */; };
 		C2590C031EF8B6CB00ECCDDA /* EventObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2590C021EF8B6CB00ECCDDA /* EventObject.swift */; };
 		C27DC53B1EE8E7AA00BBF207 /* ArtistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27DC53A1EE8E7AA00BBF207 /* ArtistTableViewController.swift */; };
+		C2FD4FF51EFA133600A28772 /* BookmarksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FD4FF41EFA133600A28772 /* BookmarksTableViewController.swift */; };
+		C2FD4FF71EFA140400A28772 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FD4FF61EFA140400A28772 /* BookmarkTableViewCell.swift */; };
 		E9299F971EF3573100C08099 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9299F961EF3573100C08099 /* CoreLocation.framework */; };
 		E9299F991EF3575100C08099 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9299F981EF3575100C08099 /* MapKit.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +60,8 @@
 		C20D0CA21EEF85F90099EF87 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
 		C2590C021EF8B6CB00ECCDDA /* EventObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventObject.swift; sourceTree = "<group>"; };
 		C27DC53A1EE8E7AA00BBF207 /* ArtistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewController.swift; sourceTree = "<group>"; };
+		C2FD4FF41EFA133600A28772 /* BookmarksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksTableViewController.swift; sourceTree = "<group>"; };
+		C2FD4FF61EFA140400A28772 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
 		E9299F961EF3573100C08099 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E9299F981EF3575100C08099 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -100,6 +104,8 @@
 				409F3DA01EECAD67002BB2FF /* DataSingleton.swift */,
 				400F63C01EF1022F00D0F8BD /* Utils.swift */,
 				415AC2A21EE65196002819D6 /* Main.storyboard */,
+				C2FD4FF61EFA140400A28772 /* BookmarkTableViewCell.swift */,
+				C2FD4FF41EFA133600A28772 /* BookmarksTableViewController.swift */,
 				40925EEF1EF7233700502F23 /* DetailViewController.swift */,
 				41C4BB5D1EF9FDFB0097E5A6 /* MapEventObject.swift */,
 				41962F861EF8B6CE00EF06E3 /* MapTableViewCell.swift */,
@@ -204,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41962F871EF8B6CE00EF06E3 /* MapTableViewCell.swift in Sources */,
+				C2FD4FF51EFA133600A28772 /* BookmarksTableViewController.swift in Sources */,
 				407BF0851EF612110071CBF0 /* DateTableViewCell.swift in Sources */,
 				41C4BB5E1EF9FDFB0097E5A6 /* MapEventObject.swift in Sources */,
 				634277EF1EF11D9C00C13DCA /* VenueViewController.swift in Sources */,
@@ -213,6 +220,7 @@
 				404572751EF22E9900E44EDA /* DateViewController.swift in Sources */,
 				6344B5441EF26B9300824182 /* VenueDetailTableViewCell.swift in Sources */,
 				40925EF01EF7233700502F23 /* DetailViewController.swift in Sources */,
+				C2FD4FF71EFA140400A28772 /* BookmarkTableViewCell.swift in Sources */,
 				2A5B3EB61EE8EC1200EC4030 /* EventTableViewController.swift in Sources */,
 				409F3DA11EECAD67002BB2FF /* DataSingleton.swift in Sources */,
 				400F63C11EF1022F00D0F8BD /* Utils.swift in Sources */,

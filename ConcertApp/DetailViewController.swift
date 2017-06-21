@@ -27,6 +27,9 @@ class DetailViewController: UIViewController {
         UIApplication.shared.openURL(NSURL(string: website_url)! as URL)
     }
     
+    @IBAction func bookmarkPressed(_ sender: Any) {
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.event_name.text = self.ename
