@@ -29,14 +29,49 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     var toAddr : String?
     var ResultCount = 1
+    var namestore : [String] = []
+    var latstore : [Double] = []
+    var longstore : [Double] = []
     
-
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         let events_obj = data["Events"] as! [Any]
         print("\(events_obj)")
         
+        //Reads JSON and creates three arrays that store the values
+        for eventitem in events_obj {
+            
+        var name = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Name"] as! String
+        var artist = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Longitude"] as! Double
+        var lat = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Latitude"] as! Double
+        var long = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Longitude"] as! Double
+            
+
+            if lat != 0.0 {
+                print("\(name)")
+                print("\(lat)")
+                print("\(long)")
+                namestore.append(name)
+                latstore.append(lat)
+                longstore.append(long)
+            }
+        }
+        
+        print("Current Location")
+        print(myLocMgr.location?.coordinate.latitude)
+        print(myLocMgr.location?.coordinate.longitude)
+        
+        for i in 1...3 {
+            let EventDist = DistCalc(CurrentLat: (myLocMgr.location?.coordinate.latitude)!,
+                 CurrentLong: (myLocMgr.location?.coordinate.longitude)!,
+                 LatValue: latstore[i],
+                 LongValue: longstore[i])
+        }
+            
+
+        
+        //Sets up tableView results
         tableView.delegate = self
         tableView.dataSource = self
         myLocMgr.requestWhenInUseAuthorization()
@@ -46,42 +81,8 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
 
         myMap.delegate = self
-        
         self.MapSearchController = UISearchController(searchResultsController: nil)
-//        self.MapSearchController.searchBar.sizeToFit()
-//        self.tableView.tableHeaderView = self.MapSearchController.searchBar
-        
-        // Do any additional setup after loading the view.
-        
-        let mySearchReq = MKLocalSearchRequest()
-        mySearchReq.naturalLanguageQuery = searchField.text
-        mySearchReq.region = self.myMap.region
-        
-        let localSearch = MKLocalSearch(request: mySearchReq)
-        localSearch.start(completionHandler: {
-            response, error in
-            if error != nil {
-                print(error!)
-                return
-            }
-            
-            let myMapItems = response!.mapItems as [MKMapItem]
-            var nearbyAnns : [MKAnnotation] = []
-            
-            if myMapItems.count > 0 {
-                for item in myMapItems {
-                    let annotation = MKPointAnnotation()
-                    annotation.title = item.name
-                    annotation.subtitle = item.description
-                    annotation.coordinate = (item.placemark.location?.coordinate)!
-                    nearbyAnns.append(annotation)
-                    self.ResultCount = self.ResultCount + 1
-                    print(String(self.ResultCount))
-                }
-            }
-            self.myMap.showAnnotations(nearbyAnns, animated: true)
-        })
-    self.tableView.reloadData()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,7 +99,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print("Final Count" + String(ResultCount))
+
         return ResultCount
     }
     
@@ -122,12 +123,13 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     
-    func ConcertsWithinRange() {
-        let ConcertLoc = CLLocation(latitude: 40.730872, longitude: -74.003066)
-        let originLoc = CLLocation(latitude: 42.730872, longitude: -72.003066)
-        let dist = originLoc.distance(from: ConcertLoc)
+    func DistCalc(CurrentLat: Double, CurrentLong: Double, LatValue: Double, LongValue: Double) -> Double {
+        let ConcertLoc = CLLocation(latitude: LatValue  , longitude: LongValue)
+        let OriginLoc = CLLocation(latitude: CurrentLat  , longitude: CurrentLong)
+        let dist = OriginLoc.distance(from: ConcertLoc)
         print("Distance between two points is: " + String(dist))
         
+        return dist
     }
     
     func StartMapSearch(SearchParameter : String){
@@ -148,11 +150,12 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             var nearbyAnns : [MKAnnotation] = []
             self.ResultCount = myMapItems.count
             print("Search Button Pressed, ResultCount = " + String(self.ResultCount))
+            
             if myMapItems.count > 0 {
                 for item in myMapItems {
                     let annotation = MKPointAnnotation()
                     annotation.title = item.name
-                    annotation.subtitle = item.description
+                    annotation.subtitle = "You are here"
                     annotation.coordinate = (item.placemark.location?.coordinate)!
                     nearbyAnns.append(annotation)
                 }
@@ -160,41 +163,8 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             self.myMap.showAnnotations(nearbyAnns, animated: true)
             self.tableView.reloadData()
         })
-        ConcertsWithinRange()
     }
-//    
-//    func StartMapSearch(SearchParameter : String){
-//        let mySearchReq = MKLocalSearchRequest()
-//        mySearchReq.naturalLanguageQuery = SearchParameter
-//        mySearchReq.region = self.myMap.region
-//        //searchField.text
-//        
-//        let localSearch = MKLocalSearch(request: mySearchReq)
-//        localSearch.start(completionHandler: {
-//            response, error in
-//            if error != nil {
-//                print(error!)
-//                return
-//            }
-//            
-//            let myMapItems = response!.mapItems as [MKMapItem]
-//            var nearbyAnns : [MKAnnotation] = []
-//            self.ResultCount = myMapItems.count
-//            print("Search Button Pressed, ResultCount = " + String(self.ResultCount))
-//            if myMapItems.count > 0 {
-//                for item in myMapItems {
-//                    let annotation = MKPointAnnotation()
-//                    annotation.title = item.name
-//                    annotation.subtitle = item.description
-//                    annotation.coordinate = (item.placemark.location?.coordinate)!
-//                    nearbyAnns.append(annotation)
-//                }
-//            }
-//            self.myMap.showAnnotations(nearbyAnns, animated: true)
-//            self.tableView.reloadData()
-//        })
-//        ConcertsWithinRange()
-//    }
+
     
 
     /*
