@@ -80,10 +80,10 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         //Creates pins
         for i in 0...ResultsCount - 1 {
             let EventKey = EventSorted[i]
-            let ConvertDistToMiles = EventStore[EventKey]?.iDistance as! Double * 0.00062137
+            let ConvertDistToMiles = EventStore[EventKey]!.iDistance * 0.00062137
         
             let annotation = MKPointAnnotation()
-            annotation.title = EventStore[EventKey]?.iName as? String
+            annotation.title = EventStore[EventKey]!.iName 
             annotation.subtitle = NSString(format: "%.2f miles away", ConvertDistToMiles) as String
             annotation.coordinate = CLLocationCoordinate2D(latitude: (EventStore[EventKey]?.iLatitude)! , longitude: (EventStore[EventKey]?.iLongitude)!)
             Anns2Display.append(annotation)
@@ -123,19 +123,19 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         
         let EventKey = EventSorted[indexPath.row]
-        let ConvertDistToMiles = EventStore[EventKey]?.iDistance as! Double * 0.00062137
+        let ConvertDistToMiles = EventStore[EventKey]!.iDistance * 0.00062137
         print(EventStore[EventKey]?.iName)
         print(EventStore[EventKey]?.iDistance)
         
         let cellIdentifier = "MapResultCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MapTableViewCell
-        print(EventStore[EventKey]?.iName as? String)
-        cell.MapResultName.text = EventStore[EventKey]?.iName as? String
+        print(EventStore[EventKey]!.iName )
+        cell.MapResultName.text = EventStore[EventKey]!.iName 
         cell.MapResultDistance.text = NSString(format: "%.2f miles away", ConvertDistToMiles) as String
         cell.MapResultImage.image = UIImage(named: "icon_location")
         
         let annotation = MKPointAnnotation()
-        annotation.title = EventStore[EventKey]?.iName as? String
+        annotation.title = EventStore[EventKey]!.iName 
         annotation.subtitle = NSString(format: "%.2f miles away", ConvertDistToMiles) as String
         annotation.coordinate = CLLocationCoordinate2D(latitude: (EventStore[EventKey]?.iLatitude)! , longitude: (EventStore[EventKey]?.iLongitude)!)
         Anns2Display.append(annotation)
@@ -211,9 +211,9 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                 var EventSorted = [Double](EventStore.keys)
                 EventSorted.sort()
                 let EventKey = EventSorted[indexPath.row]
-                vc.ename = EventStore[EventKey]?.iName as? String
+                vc.ename = EventStore[EventKey]!.iName 
                 vc.edate = Utils.getTimeString(date_str: date_str)
-                vc.evenue = EventStore[EventKey]?.iAddress as? String
+                vc.evenue = EventStore[EventKey]!.iAddress
                 vc.alist = alist_text
                 vc.website_url = url
             }
