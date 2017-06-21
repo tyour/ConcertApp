@@ -27,6 +27,8 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
          //self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        load_events()
+        
          self.searchController = UISearchController(searchResultsController: nil)
          self.searchController.searchBar.sizeToFit()
          self.searchController.hidesNavigationBarDuringPresentation = false
@@ -74,7 +76,6 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as!
             ArtistTableViewCell
         var cellItem: EventObject
-        MyEvent.append(EventObject(iName: " ", iArtist: ((((TableData["Events"]![indexPath.row] as! [String: Any])["Artists"] as! Array<[String: Any]>)[0])["Name"] as? String)!))
         if searchController.isActive {
             cellItem = searchResults[indexPath.row]
             
@@ -88,7 +89,8 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
         
         cell.ArtistName?.text = cellItem.iArtist
         print(cell.ArtistName)
-        
+        cell.ArtistImage.image = #imageLiteral(resourceName: "icon_dj")
+        cell.EventTime?.text = cellItem.iDate
         // Fade-in animation of cells. We set initial state, duration, and final state
         cell.alpha = 0
         UIView.animate(withDuration: 2.5, animations: { cell.alpha = 1})
@@ -97,6 +99,19 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
 
         
         
+    }
+    
+    func load_events()
+    {
+        var event_count = 0
+        if TableData["Events"]?.count != nil { event_count = TableData["Events"]!.count }
+        
+        for idx in 0..<event_count
+        {
+            let date_str: String = (TableData["Events"]![idx] as! [String: Any])["Date"] as! String
+            
+            MyEvent.append(EventObject(iName: " ", iArtist: ((((TableData["Events"]![idx] as! [String: Any])["Artists"] as! Array<[String: Any]>)[0])["Name"] as? String)!, iDate: Utils.getTimeString(date_str: date_str)))
+        }
     }
     
     func do_table_refresh()

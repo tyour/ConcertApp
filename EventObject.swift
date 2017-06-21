@@ -11,10 +11,12 @@ import UIKit
 class EventObject: NSObject {
     var iName = ""
     var iArtist = ""
+    var iDate = ""
     
-    init(iName: String, iArtist: String) {
+    init(iName: String, iArtist: String, iDate: String) {
         self.iName = iName
         self.iArtist = iArtist
+        self.iDate = iDate
     }
     
 }
