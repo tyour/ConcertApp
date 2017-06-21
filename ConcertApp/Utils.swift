@@ -11,6 +11,10 @@
  m4fkuuhzjcsndvp2xmqg4wkb
  832t889gh3n8728fzxthr644
  buenzrs3exbzhb7f9fbrbvyz
+ dbb7ha6cq9z9jbrmpf7qks7v
+ uwphnbt6vu4f2tebsgfapraw
+ 49wzchng5akng4j5jpuv3xku
+ sbxzadxwszauykseun6pdj3u
  */
 
 import Foundation
@@ -20,7 +24,7 @@ class Utils {
     
     static private let SECONDS_IN_DAY: Double = 86400
     static private let API_BASE_URL: String = "http://api.jambase.com"
-    static public let api_key = "buenzrs3exbzhb7f9fbrbvyz"
+    static public let api_key = "sbxzadxwszauykseun6pdj3u"
     static public let radius = "50"
     static public let zipcode = "95110"
     
