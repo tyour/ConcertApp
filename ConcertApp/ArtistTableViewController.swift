@@ -13,8 +13,8 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
 
     var searchController : UISearchController!
     var MyEvent : [EventObject] = []
-    var artistImage : [UIImage] = [#imageLiteral(resourceName: "icon_artist")]
-    var fetchName: String = "\0"
+    //var artistImage : [UIImage] = [#imageLiteral(resourceName: "icon_artist")]
+    //var fetchName: String = "\0"
     var TableData:[String: AnyObject] = DataSingleton.getInstance().default_data
     
     var searchResults : [EventObject] = []
@@ -121,6 +121,7 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
             let venue_str: String = (events_obj["Venue"] as! [String: Any])["Name"] as! String
             let url: String = (events_obj["Venue"] as! [String: Any])["Url"] as! String
             MyEvent.append(EventObject(iName: ev_name, iArtist: ((((TableData["Events"]![idx] as! [String: Any])["Artists"] as! Array<[String: Any]>)[0])["Name"] as? String)!, iDate: Utils.getTimeString(date_str: date_str), iVenue: venue_str, iURL: url, iList: alist_text))
+            
         }
     }
     
@@ -135,6 +136,8 @@ class ArtistTableViewController: UITableViewController, UISearchResultsUpdating 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellItem = searchController.isActive ? searchResults[indexPath.row] : MyEvent[indexPath.row]
     }
+    
+    
     
     /*
     // Override to support conditional editing of the table view.
