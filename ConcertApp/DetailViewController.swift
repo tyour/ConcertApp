@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var event_name: UILabel!
@@ -23,12 +24,26 @@ class DetailViewController: UIViewController {
     var evenue : String!
     var alist: String!
     
+    // CoreData for Bookmarks
+    var newBookmark : EventObjectMO!
     @IBAction func buttonPressed(_ sender: UIButton) {
         UIApplication.shared.openURL(NSURL(string: website_url)! as URL)
     }
     
     @IBAction func bookmarkPressed(_ sender: Any) {
-        
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            newBookmark = EventObjectMO(context: appDelegate.persistentContainer.viewContext)
+            newBookmark.iName = self.ename
+            newBookmark.iVenue = self.evenue
+            newBookmark.iDate = self.edate
+            newBookmark.iList = self.alist
+            newBookmark.iURL = self.website_url
+            
+            appDelegate.saveContext()
+        }
+        let bookmarkAlert = UIAlertController(title: "Bookmark Created!", message: "Revisit this page in your Bookmarks", preferredStyle: UIAlertControllerStyle.alert)
+        bookmarkAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(bookmarkAlert, animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
