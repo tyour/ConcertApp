@@ -34,8 +34,8 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         super.viewDidLoad()
         self.title = "Concerts Near Me"
         let events_obj = data["Events"] as! [Any]
-        print("\(events_obj)")
-        print("\n\n ===================================================\n\n")
+        //print("\(events_obj)")
+        //print("\n\n ===================================================\n\n")
         
         //Reads JSON and creates three arrays that store the values
         for eventitem in events_obj {
@@ -46,9 +46,9 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             let addr = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Address"] as! String
 
             if lat != 0.0 {
-                print("\(name)")
-                print("\(lat)")
-                print("\(long)")
+                //print("\(name)")
+                //print("\(lat)")
+                //print("\(long)")
                 let EventDist = DistCalc(CurrentLat: (myLocMgr.location?.coordinate.latitude)!,
                                          CurrentLong: (myLocMgr.location?.coordinate.longitude)!,
                                          LatValue: lat,
@@ -58,9 +58,9 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             }
         }
         
-        print("Current Location")
-        print(myLocMgr.location?.coordinate.latitude)
-        print(myLocMgr.location?.coordinate.longitude)
+        //print("Current Location")
+        //print(myLocMgr.location?.coordinate.latitude)
+        //print(myLocMgr.location?.coordinate.longitude)
         
 
         
@@ -118,18 +118,18 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         var EventSorted = [Double](EventStore.keys)
         EventSorted.sort()
         
-        print("\n\nindexPath.row")
-        print(indexPath.row)
+        //print("\n\nindexPath.row")
+        //print(indexPath.row)
         
         
         let EventKey = EventSorted[indexPath.row]
         let ConvertDistToMiles = EventStore[EventKey]!.iDistance * 0.00062137
-        print(EventStore[EventKey]?.iName)
-        print(EventStore[EventKey]?.iDistance)
+        //print(EventStore[EventKey]?.iName)
+        //print(EventStore[EventKey]?.iDistance)
         
         let cellIdentifier = "MapResultCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MapTableViewCell
-        print(EventStore[EventKey]!.iName )
+        //print(EventStore[EventKey]!.iName )
         cell.MapResultName.text = EventStore[EventKey]!.iName 
         cell.MapResultDistance.text = NSString(format: "%.2f miles away", ConvertDistToMiles) as String
         cell.MapResultImage.image = UIImage(named: "icon_location")
