@@ -24,7 +24,7 @@ class Utils {
     
     static private let SECONDS_IN_DAY: Double = 86400
     static private let API_BASE_URL: String = "http://api.jambase.com"
-    static public let api_key = "sbxzadxwszauykseun6pdj3u"
+    static public let api_key = "832t889gh3n8728fzxthr644"
     static public let radius = "50"
     static public let zipcode = "95110"
     

@@ -41,9 +41,9 @@ class DetailViewController: UIViewController {
             
             appDelegate.saveContext()
         }
-        //let bookmarkAlert = UIAlertController(title: "Bookmark Created!", message: "Revisit this page in your Bookmarks", preferredStyle: UIAlertControllerStyle.alert)
-       // bookmarkAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-       // self.present(bookmarkAlert, animated: true, completion: nil)
+        let bookmarkAlert = UIAlertController(title: "Bookmark Created!", message: "Revisit this page in your Bookmarks", preferredStyle: UIAlertControllerStyle.alert)
+        bookmarkAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(bookmarkAlert, animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
