@@ -29,6 +29,7 @@
 		84F2834E1EFA623200505361 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2834D1EFA623200505361 /* MapDetailViewController.swift */; };
 		C20D0CA31EEF85F90099EF87 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D0CA21EEF85F90099EF87 /* ArtistTableViewCell.swift */; };
 		C2590C031EF8B6CB00ECCDDA /* EventObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2590C021EF8B6CB00ECCDDA /* EventObject.swift */; };
+		C26CC0BC1EFAE2F000FE8F18 /* BookmarkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26CC0BB1EFAE2F000FE8F18 /* BookmarkDetailViewController.swift */; };
 		C27DC53B1EE8E7AA00BBF207 /* ArtistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27DC53A1EE8E7AA00BBF207 /* ArtistTableViewController.swift */; };
 		C2FD4FF51EFA133600A28772 /* BookmarksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FD4FF41EFA133600A28772 /* BookmarksTableViewController.swift */; };
 		C2FD4FF71EFA140400A28772 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FD4FF61EFA140400A28772 /* BookmarkTableViewCell.swift */; };
@@ -61,6 +62,7 @@
 		84F2834D1EFA623200505361 /* MapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
 		C20D0CA21EEF85F90099EF87 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
 		C2590C021EF8B6CB00ECCDDA /* EventObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventObject.swift; sourceTree = "<group>"; };
+		C26CC0BB1EFAE2F000FE8F18 /* BookmarkDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkDetailViewController.swift; sourceTree = "<group>"; };
 		C27DC53A1EE8E7AA00BBF207 /* ArtistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewController.swift; sourceTree = "<group>"; };
 		C2FD4FF41EFA133600A28772 /* BookmarksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksTableViewController.swift; sourceTree = "<group>"; };
 		C2FD4FF61EFA140400A28772 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				409F3DA01EECAD67002BB2FF /* DataSingleton.swift */,
 				400F63C01EF1022F00D0F8BD /* Utils.swift */,
 				415AC2A21EE65196002819D6 /* Main.storyboard */,
+				C26CC0BB1EFAE2F000FE8F18 /* BookmarkDetailViewController.swift */,
 				C2FD4FF61EFA140400A28772 /* BookmarkTableViewCell.swift */,
 				C2FD4FF41EFA133600A28772 /* BookmarksTableViewController.swift */,
 				40925EEF1EF7233700502F23 /* DetailViewController.swift */,
@@ -226,6 +229,7 @@
 				C2FD4FF71EFA140400A28772 /* BookmarkTableViewCell.swift in Sources */,
 				2A5B3EB61EE8EC1200EC4030 /* EventTableViewController.swift in Sources */,
 				409F3DA11EECAD67002BB2FF /* DataSingleton.swift in Sources */,
+				C26CC0BC1EFAE2F000FE8F18 /* BookmarkDetailViewController.swift in Sources */,
 				400F63C11EF1022F00D0F8BD /* Utils.swift in Sources */,
 				2A5B3EB81EE8EC5E00EC4030 /* EventTableViewCell.swift in Sources */,
 				C20D0CA31EEF85F90099EF87 /* ArtistTableViewCell.swift in Sources */,

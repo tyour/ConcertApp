@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YVi-0J-emd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YVi-0J-emd">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -208,9 +208,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKB-zU-ago">
-                                <rect key="frame" x="357" y="62" width="46" height="30"/>
+                                <rect key="frame" x="319" y="62" width="84" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Bookmark"/>
                                 <connections>
                                     <action selector="bookmarkPressed:" destination="ew9-aj-QaH" eventType="touchUpInside" id="93y-26-Zbj"/>
                                 </connections>
@@ -546,6 +546,7 @@
                                     <outlet property="EventImage" destination="7ty-Sq-slu" id="HoH-2F-kdV"/>
                                     <outlet property="EventName" destination="lBi-kT-gzl" id="xfs-yN-NmB"/>
                                     <outlet property="EventTime" destination="Fxo-De-g72" id="DgX-7t-Pum"/>
+                                    <segue destination="eeg-CX-Dsz" kind="show" identifier="BMCelltoBMDetail" id="KVa-m2-qYr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -559,6 +560,79 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Nk-PE-d3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1378.2608695652175" y="725.54347826086962"/>
+        </scene>
+        <!--Bookmark Detail View Controller-->
+        <scene sceneID="a0q-AJ-TK5">
+            <objects>
+                <viewController id="eeg-CX-Dsz" customClass="BookmarkDetailViewController" customModule="ConcertApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K30-Tf-1I5"/>
+                        <viewControllerLayoutGuide type="bottom" id="ngl-1U-SiA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PRH-nP-P5k">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtG-uR-3Q7">
+                                <rect key="frame" x="20" y="100" width="374" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIp-eN-WmM">
+                                <rect key="frame" x="20" y="156" width="374" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event venue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pF-Q9-Yh9">
+                                <rect key="frame" x="20" y="212" width="374" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Featuring" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0w-bp-zkS">
+                                <rect key="frame" x="20" y="309" width="374" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVl-nR-crb">
+                                <rect key="frame" x="87" y="572" width="240" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Tickets and Information">
+                                    <color key="titleColor" red="0.52215702959999999" green="0.81589480410000004" blue="0.85303501309999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="eeg-CX-Dsz" eventType="touchUpInside" id="nTj-hY-hbk"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Artist List" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DWf-p4-u55">
+                                <rect key="frame" x="87" y="365" width="240" height="199"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="artist_list" destination="DWf-p4-u55" id="ajZ-Mi-B3u"/>
+                        <outlet property="event_date" destination="BIp-eN-WmM" id="FFX-xy-TVB"/>
+                        <outlet property="event_name" destination="MtG-uR-3Q7" id="W5L-a6-jge"/>
+                        <outlet property="event_venue" destination="6pF-Q9-Yh9" id="jUB-I6-ZIh"/>
+                        <outlet property="link_button" destination="YVl-nR-crb" id="6l6-h2-uPo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FSL-4Q-R0Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="845" y="1378"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="4Ze-zV-RX8">
@@ -755,6 +829,6 @@
         <image name="icon_location" width="85" height="85"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WSO-NW-KJ0"/>
+        <segue reference="Atw-N6-w0u"/>
     </inferredMetricsTieBreakers>
 </document>
