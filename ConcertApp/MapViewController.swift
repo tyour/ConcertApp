@@ -75,6 +75,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         var EventSorted = [Double](EventStore.keys)
         EventSorted.sort()
         
+        //Creates pins
         for i in 0...ResultsCount - 1 {
             let EventKey = EventSorted[i]
             let ConvertDistToMiles = EventStore[EventKey]?.iDistance as! Double * 0.00062137
@@ -95,7 +96,8 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Table view data source
+    // MARK: - Table view data source 
+    //======================== TABLEVIEW ========================//
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -107,6 +109,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 
         return ResultsCount
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->  UITableViewCell {
         
@@ -139,7 +142,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         return cell
     }
 
-    
+    //======================== ADDED FUNCTIONS ========================//
     @IBAction func searchButtonPress(_ sender: Any) {
         StartMapSearch(SearchParameter: searchField.text!)
         self.tableView.reloadData()
