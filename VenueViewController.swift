@@ -9,9 +9,9 @@
 import UIKit
 
 class VenueViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet var tableView: UITableView!
-    var VenueID: String = ""
+    var VenueID: String = " "
     var TableData:[String: AnyObject] = [:]
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     override func viewDidLoad() {
@@ -29,9 +29,10 @@ class VenueViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
-        get_data_from_url(url: "http://api.jambase.com/events?venueId=" + VenueID + "&page=0&api_key=buenzrs3exbzhb7f9fbrbvyz")
+        print(VenueID)
+        get_data_from_url(url: "http://api.jambase.com/events?venueId=" + VenueID + "&page=0&api_key=uwphnbt6vu4f2tebsgfapraw")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -138,16 +139,16 @@ class VenueViewController: UIViewController, UITableViewDelegate, UITableViewDat
         //VenueID = "\((TableData["Venues"]![indexPath.row]! as! [String: Any])["Id"]!)"
         //print((TableData["Venues"]![indexPath.row]! as! [String: Any])["Id"]!)
     }
-
+    
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
