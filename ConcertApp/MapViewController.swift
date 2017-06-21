@@ -17,33 +17,31 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet var searchField: UITextField!
     
     @IBOutlet var tableView: UITableView!
-    
-    var MapSearchController : UISearchController!
-    var matchingItems:[MKMapItem] = []
+
     var data = DataSingleton.getInstance().default_data
     
     
     var myLocMgr = CLLocationManager()
     var myGeoCoder = CLGeocoder()
     var showPlacemark = CLPlacemark()
-    
-    var toAddr : String?
-    var ResultCount = 1
+
     var EventStore : [Double: MapEventObject] = [:]
-    var Results2Display : [MapEventObject] = []
+    var Anns2Display : [MKAnnotation] = []
+    var ResultsCount : Int = 10
     
    
     override func viewDidLoad() {
         super.viewDidLoad()
         let events_obj = data["Events"] as! [Any]
         print("\(events_obj)")
+        print("\n\n ===================================================\n\n")
         
         //Reads JSON and creates three arrays that store the values
         for eventitem in events_obj {
             
-            var name = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Name"] as! String
-            var lat = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Latitude"] as! Double
-            var long = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Longitude"] as! Double
+            let name = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Name"] as! String
+            let lat = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Latitude"] as! Double
+            let long = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Longitude"] as! Double
 
             if lat != 0.0 {
                 print("\(name)")
@@ -54,7 +52,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                                          LatValue: lat,
                                          LongValue: long)
                 let obj = MapEventObject(iName: name, iLatitude: lat, iLongitude: long, iDistance: EventDist)
-                EventStore.updateValue(obj, forKey: EventDist)
+                EventStore[EventDist] = obj
             }
         }
         
@@ -62,17 +60,6 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         print(myLocMgr.location?.coordinate.latitude)
         print(myLocMgr.location?.coordinate.longitude)
         
-        // EventStore = [1.0:Foo], [1.5:Bar], [0.5:Baz], [0.2:Boo]
-        
-//       var sortedKeys = Array(EventStore.keys.sorted())
-//       
-//        print("\nSorted Keys")
-//        print(sortedKeys)
-//        print(sortedKeys.endIndex)
-//        for i in 0...sortedKeys.endIndex - 1 {
-//            print(sortedKeys[i])
-//            print(EventStore[sortedKeys[i]])
-//        }
 
         
         //Sets up tableView results
@@ -85,8 +72,22 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
 
         myMap.delegate = self
-        self.MapSearchController = UISearchController(searchResultsController: nil)
+        var EventSorted = [Double](EventStore.keys)
+        EventSorted.sort()
+        
+        for i in 0...ResultsCount - 1 {
+            let EventKey = EventSorted[i]
+            let ConvertDistToMiles = EventStore[EventKey]?.iDistance as! Double * 0.00062137
+        
+            let annotation = MKPointAnnotation()
+            annotation.title = EventStore[EventKey]?.iName as? String
+            annotation.subtitle = NSString(format: "%.2f miles away", ConvertDistToMiles) as String
+            annotation.coordinate = CLLocationCoordinate2D(latitude: (EventStore[EventKey]?.iLatitude)! , longitude: (EventStore[EventKey]?.iLongitude)!)
+            Anns2Display.append(annotation)
+        }
+        
         self.tableView.reloadData()
+        self.myMap.showAnnotations(Anns2Display, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -104,20 +105,38 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
 
-        return ResultCount
+        return ResultsCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->  UITableViewCell {
-
+        
+        var EventSorted = [Double](EventStore.keys)
+        EventSorted.sort()
+        
+        print("\n\nindexPath.row")
+        print(indexPath.row)
+        
+        
+        let EventKey = EventSorted[indexPath.row]
+        let ConvertDistToMiles = EventStore[EventKey]?.iDistance as! Double * 0.00062137
+        print(EventStore[EventKey]?.iName)
+        print(EventStore[EventKey]?.iDistance)
         
         let cellIdentifier = "MapResultCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MapTableViewCell
-        cell.MapResultName.text = "Placeholder Name"
-        cell.MapResultDistance.text = "10 Miles"
+        print(EventStore[EventKey]?.iName as? String)
+        cell.MapResultName.text = EventStore[EventKey]?.iName as? String
+        cell.MapResultDistance.text = NSString(format: "%.2f miles away", ConvertDistToMiles) as String
         cell.MapResultImage.image = UIImage(named: "icon_location")
-
-        return cell
         
+        let annotation = MKPointAnnotation()
+        annotation.title = EventStore[EventKey]?.iName as? String
+        annotation.subtitle = NSString(format: "%.2f miles away", ConvertDistToMiles) as String
+        annotation.coordinate = CLLocationCoordinate2D(latitude: (EventStore[EventKey]?.iLatitude)! , longitude: (EventStore[EventKey]?.iLongitude)!)
+        Anns2Display.append(annotation)
+        
+        self.myMap.showAnnotations(Anns2Display, animated: true)
+        return cell
     }
 
     
@@ -152,8 +171,6 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             
             let myMapItems = response!.mapItems as [MKMapItem]
             var nearbyAnns : [MKAnnotation] = []
-            self.ResultCount = myMapItems.count
-            print("Search Button Pressed, ResultCount = " + String(self.ResultCount))
             
             if myMapItems.count > 0 {
                 for item in myMapItems {
