@@ -12,6 +12,7 @@ class ArtistTableViewCell: UITableViewCell {
 
     @IBOutlet weak var ArtistImage: UIImageView!
     @IBOutlet weak var ArtistName: UILabel!
+    @IBOutlet weak var EventTime: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
