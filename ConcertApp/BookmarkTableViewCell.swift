@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class BookmarkTableViewCell: UITableViewCell {
     @IBOutlet weak var EventName: UILabel!
