@@ -14,12 +14,14 @@ class MapEventObject: NSObject {
     var iLatitude : Double
     var iLongitude: Double
     var iDistance: Double
+    var iAddress = ""
     
-    init(iName: String, iLatitude: Double, iLongitude: Double, iDistance: Double) {
+    init(iName: String, iLatitude: Double, iLongitude: Double, iDistance: Double, iAddress: String) {
         self.iName = iName
         self.iLatitude = iLatitude
         self.iLongitude = iLongitude
         self.iDistance = iDistance
+        self.iAddress = iAddress
     }
     
 }

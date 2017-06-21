@@ -32,6 +32,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Concerts Near Me"
         let events_obj = data["Events"] as! [Any]
         print("\(events_obj)")
         print("\n\n ===================================================\n\n")
@@ -42,6 +43,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             let name = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Name"] as! String
             let lat = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Latitude"] as! Double
             let long = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Longitude"] as! Double
+            let addr = ((eventitem as! [String: Any])["Venue"] as! [String: Any])["Address"] as! String
 
             if lat != 0.0 {
                 print("\(name)")
@@ -51,7 +53,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                                          CurrentLong: (myLocMgr.location?.coordinate.longitude)!,
                                          LatValue: lat,
                                          LongValue: long)
-                let obj = MapEventObject(iName: name, iLatitude: lat, iLongitude: long, iDistance: EventDist)
+                let obj = MapEventObject(iName: name, iLatitude: lat, iLongitude: long, iDistance: EventDist, iAddress: addr)
                 EventStore[EventDist] = obj
             }
         }
@@ -187,6 +189,35 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             self.myMap.showAnnotations(nearbyAnns, animated: true)
             self.tableView.reloadData()
         })
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "mapToDetail" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let i = indexPath.row
+                let vc = segue.destination as! DetailViewController
+                let events_obj = data["Events"]![i] as! [String: Any]
+                let date_str: String = events_obj["Date"] as! String
+                let venue_str: String = (events_obj["Venue"] as! [String: Any])["Name"] as! String
+                let url: String = (events_obj["Venue"] as! [String: Any])["Url"] as! String
+                let artists = events_obj["Artists"] as! Array<[String: Any]>
+                var alist_text = ""
+                for a in artists {
+                    var aname = String(describing: a["Name"]!)
+                    alist_text += "\(aname)\n"
+                }
+                let ev_name: String = "\(artists[0]["Name"]!)"
+                
+                var EventSorted = [Double](EventStore.keys)
+                EventSorted.sort()
+                let EventKey = EventSorted[indexPath.row]
+                vc.ename = EventStore[EventKey]?.iName as? String
+                vc.edate = Utils.getTimeString(date_str: date_str)
+                vc.evenue = EventStore[EventKey]?.iAddress as? String
+                vc.alist = alist_text
+                vc.website_url = url
+            }
+        }
     }
 
     

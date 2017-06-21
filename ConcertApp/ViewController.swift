@@ -20,15 +20,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     //Static objects
     @IBOutlet var TitleLabel: UILabel!
-    
+    @IBOutlet var BackgroundLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "concertbackground_formatted"))
         
-        //Formats button cluster
-        //        ArtistButton.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "icon_artist"))
-        //        EventButton.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "icon_event"))
-        //        DateButton.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "icon_genre"))
-        //        LocationButton.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "icon_location"))
+        BackgroundLabel.backgroundColor = UIColor.white
+        BackgroundLabel.layer.cornerRadius = 20.0
+        BackgroundLabel.clipsToBounds = true
         
         ArtistButton.layer.cornerRadius = 5
         EventButton.layer.cornerRadius = 5
