@@ -10,6 +10,8 @@ import UIKit
 
 class BookmarksTableViewController: UITableViewController {
 
+    var MyBookmarks : [EventObject] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

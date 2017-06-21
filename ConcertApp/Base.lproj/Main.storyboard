@@ -207,6 +207,14 @@
                                     <action selector="buttonPressed:" destination="ew9-aj-QaH" eventType="touchUpInside" id="5wz-HC-Jr6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKB-zU-ago">
+                                <rect key="frame" x="357" y="62" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="bookmarkPressed:" destination="ew9-aj-QaH" eventType="touchUpInside" id="93y-26-Zbj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
